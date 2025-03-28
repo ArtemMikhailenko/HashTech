@@ -1,0 +1,142 @@
+.footer {
+    background-color: #262626;
+    background-image: url('/images/dot-pattern.png');
+    color: white;
+    padding: 3rem 0;
+    font-family: "Roboto Flex", sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .footerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .logoSection {
+    flex: 2;
+    margin-bottom: 2rem;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .pronunciation {
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    opacity: 0.7;
+    font-family: "Roboto Mono", monospace;
+  }
+  
+  .copyright {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #aaa;
+    max-width: 450px;
+  }
+  
+  .navigation {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+  }
+  
+  .nav {
+    display: flex;
+  }
+  
+  .navLink {
+    color: white;
+    text-decoration: none;
+    margin-right: 2rem;
+    font-size: 1rem;
+    transition: opacity 0.2s ease;
+  }
+  
+  .navLink:hover {
+    opacity: 0.7;
+  }
+  
+  .socialSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+  }
+  
+  .socialLinks {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .socialIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f0e8;
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .socialIcon:hover {
+    background-color: #ddd;
+  }
+  
+  .bookCallButton {
+    display: inline-block;
+    background-color: #a8c8b0;
+    color: #222;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .bookCallButton:hover {
+    background-color: #97b79f;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .footerContent {
+      flex-direction: column;
+    }
+    
+    .logoSection, .navigation, .socialSection {
+      width: 100%;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    
+    .socialSection {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .nav {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .socialSection {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }

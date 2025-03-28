@@ -1,0 +1,45 @@
+.heroSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background: #262626;
+    padding: 2rem;
+    font-family: "Roboto Mono", sans-serif;
+    color: #fff;
+  }
+  
+  .heroContent {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+    padding-top: 2rem;
+  }
+  
+  .subTitle {
+    font-size: 1.5rem;
+    color: #aaa;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .title {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .title svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    text-align: center;
+  }

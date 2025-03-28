@@ -1,0 +1,141 @@
+.teamSection {
+    background-color: #262626;
+    background-image: url('/images/dot-pattern.png');
+    padding: 5rem 0;
+    font-family: "Roboto Mono", monospace;
+    color: #f2f0e8;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    color: #f2f0e8;
+  }
+  
+  .titleHighlight {
+    font-weight: 400;
+  }
+  
+  .teamGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .memberCard {
+    background-color: #f2f0e8;
+    color: #222;
+    border-radius: 10px;
+    position: relative;
+    height: 100%;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .memberCard:hover {
+    transform: translateY(-10px);
+  }
+  
+  .cardDogEar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    overflow: hidden;
+  }
+  
+  .cardDogEar:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 30px 30px 0;
+    border-color: transparent #1a1a1a transparent transparent;
+    transform: rotate(0deg);
+  }
+  
+  .memberInfo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .memberName {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .memberRole {
+    flex-grow: 1;
+  }
+  
+  .roleTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .memberBio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .socialLinks {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+  }
+  
+  .socialLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #222;
+    transition: all 0.3s ease;
+  }
+  
+  .socialLink:hover {
+    background-color: #222;
+    color: #f2f0e8;
+  }
+  
+  .linkIcon {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  @media (max-width: 1024px) {
+    .teamGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .teamGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .sectionTitle {
+      font-size: 2rem;
+    }
+  }

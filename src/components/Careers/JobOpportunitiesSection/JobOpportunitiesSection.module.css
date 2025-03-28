@@ -1,0 +1,177 @@
+.jobSection {
+  background-color: #f2f0e8;
+  /* padding: 5rem 0; */
+  font-family: "Roboto Mono", monospace;
+  color: #222;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+  color: #222;
+}
+
+.categoryFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.categoryButton {
+  padding: 0.8rem 1.5rem;
+  background-color: transparent;
+  border: 1px solid #222;
+  color: #222;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.categoryButton.active {
+  background-color: #222;
+  color: white;
+}
+
+.categoryButton:hover:not(.active) {
+  background-color: rgba(34, 34, 34, 0.1);
+}
+
+.jobGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.jobCard {
+  border: 1px solid #222;
+  overflow: hidden;
+  position: relative;
+  background-color: #f2f0e8;
+}
+
+.jobCardInner {
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #f2f0e8;
+}
+
+.folded {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background-color: #222;
+  transform: rotate(45deg) translate(35px, -35px);
+}
+
+.jobTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.jobDescription {
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.jobCardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.jobLocation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #222;
+  font-size: 0.9rem;
+}
+
+.findOutButton {
+  display: inline-block;
+  background-color: #333;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+}
+
+.findOutButton::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: -1;
+  transition: all 0.2s ease;
+}
+
+.findOutButton:hover {
+  background-color: #444;
+}
+
+.findOutButton:hover::after {
+  bottom: -5px;
+  right: -5px;
+}
+.pixelPatternContainer {
+  position: relative;
+  top: 10px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.pixelPattern {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  rotate: 180deg;
+}
+/* Responsive styles */
+@media (max-width: 992px) {
+  .jobGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .categoryFilters {
+    justify-content: center;
+  }
+  
+  .categoryButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}

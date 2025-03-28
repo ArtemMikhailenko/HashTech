@@ -1,0 +1,86 @@
+.aboutSection {
+    background-color: #f2f0e8;
+    color: white;
+    padding: 5rem 0;
+    font-family: "Roboto Mono", monospace;
+    position: relative;
+  }
+  
+  .aboutSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 4px 4px;
+    background-repeat: repeat;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem;
+    background-color: #222;
+    background-image: url('/images/dot-pattern.png');
+
+  }
+  
+  .content {
+   
+    max-width: 900px;
+    /* padding: 60px 120px; */
+    margin: 0 auto;
+
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .pronunciation {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #888;
+  }
+  
+  .description {
+    margin-bottom: 2rem;
+  }
+  
+  .paragraph {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: #eee;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .aboutSection {
+      margin: 1rem;
+      padding: 3rem 0;
+    }
+    
+    .title {
+      font-size: 2rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .pronunciation {
+      font-size: 1.2rem;
+    }
+    
+    .paragraph {
+      font-size: 1rem;
+    }
+  }
