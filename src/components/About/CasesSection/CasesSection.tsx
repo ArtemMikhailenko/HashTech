@@ -25,13 +25,19 @@ const CasesSection: React.FC = () => {
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Yeet</h3>
+                <div className={styles.tags}>
+                  <span className={styles.tag}>Design</span>
+                </div>
                 <p className={styles.cardDescription}>
                   A DeFi hit on Berachain: 
-                  <span className={styles.highlight}>$12.79M+</span> market cap, <span className={styles.highlight}>30K+</span> 
-                  stakers, <span className={styles.highlight}>4.33M+</span> 
+                  <strong> $12.79M+</strong> market cap, <strong>30K+</strong> 
+                  stakers, <strong>4.33M+</strong> 
                   transactions, and a sold-
                   out NFT collection.
                 </p>
+                <div className={styles.discoverButton}>
+                  Discover more
+                </div>
               </div>
             </div>
           </Link>
@@ -43,12 +49,18 @@ const CasesSection: React.FC = () => {
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Not pixel</h3>
+                <div className={styles.tags}>
+                  <span className={styles.tag}>Design</span>
+                </div>
                 <p className={styles.cardDescription}>
                   A Telegram-based pixel art 
-                  game with <span className={styles.highlight}>10M+</span> pixel 
+                  game with <strong>10M+</strong> pixel 
                   placements and a thriving 
                   creative community
                 </p>
+                <div className={styles.discoverButton}>
+                  Discover more
+                </div>
               </div>
             </div>
           </Link>
@@ -60,12 +72,19 @@ const CasesSection: React.FC = () => {
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Qappi</h3>
+                <div className={styles.tags}>
+                  <span className={styles.tag}>Development</span>
+                  <span className={styles.tag}>Design</span>
+                </div>
                 <p className={styles.cardDescription}>
                   A Web3 engagement platform 
-                  with <span className={styles.highlight}>12M+</span> on-chain 
+                  with <strong>12M+</strong> on-chain 
                   transactions and a branded 
                   tea line
                 </p>
+                <div className={styles.discoverButton}>
+                  Discover more
+                </div>
               </div>
             </div>
           </Link>
@@ -77,12 +96,19 @@ const CasesSection: React.FC = () => {
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Angry miner</h3>
+                <div className={styles.tags}>
+                  <span className={styles.tag}>Development</span>
+                  <span className={styles.tag}>Design</span>
+                </div>
                 <p className={styles.cardDescription}>
-                  A P2E success with <span className={styles.highlight}>480K+</span> 
-                  DAU, <span className={styles.highlight}>$2.59M+</span> in player 
-                  transactions, and <span className={styles.highlight}>120K+</span> 
+                  A P2E success with <strong>480K+</strong> 
+                  DAU, <strong>$2.59M+</strong> in player 
+                  transactions, and <strong>120K+</strong> 
                   user deposits
                 </p>
+                <div className={styles.discoverButton}>
+                  Discover more
+                </div>
               </div>
             </div>
           </Link>
