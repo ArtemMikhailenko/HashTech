@@ -181,6 +181,8 @@
   
   .pixelPatternContainer {
     width: 100%;
+    position: relative;
+    bottom: -20px;
     height: 100%;
     overflow: hidden;
   }
