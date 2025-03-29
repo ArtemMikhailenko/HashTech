@@ -7,7 +7,7 @@ const AboutSection: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <h2 className={styles.title}>
-            About <span className={styles.pronunciation}>[ hæʃˈtɛk ]</span>
+            About <span className={styles.pronunciation}>[ hæʃ tɛk ]</span>
           </h2>
           
           <div className={styles.description}>

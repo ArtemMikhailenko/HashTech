@@ -1,71 +1,70 @@
 .ctaSection {
   background-color: #262626;
-  background-image: url('/images/dot-pattern.png');
+  background-image: url('/images/dot-pattern2.png');
     color: white;
     padding: 5rem 0;
     font-family: "Roboto Mono", monospace;
   }
   
   .container {
-    max-width: 1200px;
+    max-width: 1260px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 20px;
     text-align: center;
   }
   
   .title {
-    font-size: 3rem;
-    font-weight: 500;
-    line-height: 1.2;
-    margin-bottom: 4rem;
+    font-weight: 700;
+    font-size: 65px;
+    line-height: 131%;
+    text-align: center;
+    color: #e6ecf2;
     text-align: center;
   }
   
   .pixelText {
-    font-family: monospace;
+    font-family: "Pixelify Sans", sans-serif;;
     letter-spacing: -1px;
   }
   
   .projectText {
-    color: #8499b1;
-    font-weight: 400;
+    color: #8695ad;
   }
   
   .ctaContent {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 15px;
     margin-top: 2rem;
+  }
+  .ctaContent > * {
+    flex: 1;
   }
   
   .leftText, .rightText {
-    flex: 1;
-    max-width: 300px;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #dddddd;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 162%;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: #e6ecf2;
   }
   
-  .leftText {
-    text-align: right;
-    padding-right: 2rem;
-  }
-  
-  .rightText {
-    text-align: left;
-    padding-left: 2rem;
-  }
   
   .ctaButton {
     display: inline-block;
-    background-color: #f2f0e8;
-    color: #222;
-    padding: 1rem 3rem;
-    font-size: 1.2rem;
+    font-weight: 900;
+    font-size: 24px;
+    box-shadow: 4px 4px 0 0 #000;
+    background: #f7f5ee;
+    opacity: 0.9;
+    padding: 15px 0;
     text-decoration: none;
-    border: none;
+    text-wrap: nowrap;
+    border: 1px solid #080808;
+    color: #262626;
     cursor: pointer;
-    font-weight: 600;
     transition: all 0.3s ease;
     position: relative;
   }

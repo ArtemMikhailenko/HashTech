@@ -1,5 +1,5 @@
 .openPositionsSection {
-    background-color: #f2f0e8;
+    background-color: #fdfcf7;
     padding: 6rem 0;
     font-family: "Roboto Mono", monospace;
   }
@@ -7,39 +7,47 @@
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 80px 2rem;
   }
   
   .title {
-    font-size: 3.5rem;
-    font-weight: 500;
-    margin-bottom: 2rem;
-    color: #222;
+    font-weight: 600;
+    font-size: 55px;
+    line-height: 196%;
+    color: #242424;
   }
   
   .pixelText {
-    font-family: monospace;
+    font-family: "Pixelify Sans", sans-serif;
     letter-spacing: -1px;
+    font-weight: 400;
   }
   
   .description {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    color: #222;
-    max-width: 700px;
-    margin-bottom: 3rem;
+    font-weight: 500;
+    font-size: 22px;
+    max-width: 780px;
+    font-family: "Roboto Mono", sans-serif;;
+    line-height: 123%;
+    letter-spacing: -0.02em;
+    color: #232323;
+    margin-bottom: 30px;
   }
   
   .joinButton {
     display: inline-block;
     background-color: transparent;
-    color: #222;
-    padding: 1rem 2rem;
-    border: 1px solid #222;
-    font-size: 1rem;
+    padding: 10px 40px;
+    border: 1px solid #252525;
+    font-weight: 900;
+    font-size: 16px;
+    text-align: center;
+    color: #252525;
     text-decoration: none;
     position: relative;
     transition: transform 0.3s ease;
+    box-shadow: 4px 4px 0 0 #252525;
+
   }
   
   .joinButton::after {

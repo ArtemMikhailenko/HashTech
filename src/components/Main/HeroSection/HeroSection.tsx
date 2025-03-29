@@ -10,8 +10,7 @@ const HeroSection: React.FC = () => {
           <img src="/images/logo-hero.svg" alt="" />
         </h1>
         <p className={styles.description}>
-          /from 'blok.tjeɪn æps tu: 'di:.faɪ 'pao.əd sə'lu:.ʃənz, wi: bɪld ðə
-          'nɛkst ˌdʒɛn.ə'reɪʃən əv ˌdɪ:.sɛn.trə.laɪzd tɛknɔ.lə.dʒi/
+        /frʌm ˈblɒk.tʃeɪn æps tuː ˌeɪ.aɪ-ˈdrɪv.ən səˈluː.ʃənz, wiː bɪld ðə nekst ˌʤɛn.əˈreɪ.ʃən ʌv ˌdiːˈsɛn.trə.laɪzd tɛkˈnɒl.ə.dʒi/
         </p>
       </div>
     </section>

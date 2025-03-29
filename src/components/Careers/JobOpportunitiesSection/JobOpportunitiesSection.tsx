@@ -76,15 +76,15 @@ const JobOpportunitiesSection: React.FC = () => {
             <div key={job.id} className={styles.jobCard}>
               <div className={styles.jobCardInner}>
                 <div className={styles.folded}></div>
+                <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 45.6968V2.9998L59 59.9998H16.303C8.40368 59.9998 2 53.5961 2 45.6968Z" fill="#FBF8F0" stroke="black" stroke-width="2.38384" />
+                </svg>
                 <h3 className={styles.jobTitle}>{job.title}</h3>
                 <p className={styles.jobDescription}>{job.description}</p>
                 
                 <div className={styles.jobCardFooter}>
                   <div className={styles.jobLocation}>
-                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
+                    <img src="/icons/location.svg" alt="" />
                     <span>{job.location}</span>
                   </div>
                   <Link href={`/careers/${job.id}`} className={styles.findOutButton}>

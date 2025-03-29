@@ -1,6 +1,5 @@
 .caseStudiesSection {
-  background-color: #fdfcf7;
-  /* padding: 3rem 0; */
+  background-color: #f2efe6;
   font-family: "Roboto Mono", monospace;
 }
 
@@ -9,72 +8,74 @@
   margin: 0 auto;
   padding: 0 2rem;
   color: #222;
-
+  padding-bottom: 120px;
 }
 
 .casesList {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 30px;
 }
 
 .caseCard {
   position: relative;
   width: 100%;
-}
-
-.caseCard::before {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  background-image: url('/images/dot-pattern-dark.png');
-  background-size: 5px 5px;
-  border-radius: 10px;
-  z-index: 0;
+  margin-bottom: 1.5rem;
+  border-radius: 20px;
+  left: -20px;
+  background: #202020;
+  background-image: url('/images/dot-pattern.png');
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .caseCardInner {
   position: relative;
-  background-color: #f2f0e8;
-  border: 1px solid #222;
-  border-radius: 10px;
+  background-color: #f2efe6;
+  border-radius: 20px;
+  border: #262626 solid 2px;
   padding: 2rem;
   z-index: 1;
+  top: -20px;
+  right: -20px;
 }
-
+.caseCardInner svg{
+  position: absolute;
+  top: -2.8px;
+  right: -2.8px;
+}
 .folded {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  border-bottom-left-radius: 5px;
+  top: -2.5px;
+  right: -2.5px;
+  width: 60px;
+  height: 60px;
+  background-color: #f2efe6;
+  border-top-right-radius: 20px;
   clip-path: polygon(0 0, 100% 0, 100% 100%);
+  z-index: 2;
 }
 
 .caseTitle {
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #222;
+  font-weight: 700;
+  font-size: 28px;
+  color: #252525;
+  margin-bottom: 1rem;
 }
 
 .caseDescription {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  color: #333;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  color: #6c6c6c;
+  margin-bottom: 2rem;
 }
 
 .caseDetails {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .detailColumn {
@@ -82,10 +83,12 @@
 }
 
 .detailTitle {
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-  color: #555;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  color: #6c6c6c;
+  margin-bottom: 5px;
 }
 
 .tagGroup {
@@ -94,22 +97,40 @@
   gap: 0.5rem;
 }
 
-.costTag, .serviceTag {
+.costTag {
   display: inline-block;
-  padding: 0.4rem 1rem;
-  font-size: 0.85rem;
-  border-radius: 2px;
-  border: 1px solid #ddd;
-  background-color: white;
+  font-weight: 900;
+  font-size: 16px;
+  color: #252525;
+  background: #f7f5ee;
+  opacity: 0.9;
+  border: 1px solid #080808;
+  padding: 9px 25px;
+
+}
+
+.serviceTag {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 16px;
+  color: #252525;
+  background: #f7f5ee;
+  opacity: 0.9;
+  border: 1px solid #080808;
+  padding: 9px 12px;
 }
 
 .sectorTag {
   display: inline-block;
-  padding: 0.4rem 1rem;
-  font-size: 0.85rem;
-  border-radius: 2px;
-  color: #222;
+  font-weight: 900;
+  font-size: 16px;
+  color: #252525;
+  background: #f7f5ee;
+  opacity: 0.9;
+  border: 1px solid #080808;
+  padding: 9px 12px;
 }
+
 .pixelPatternContainer {
   position: relative;
   bottom: -10px;
@@ -130,5 +151,9 @@
   .caseDetails {
     flex-direction: column;
     gap: 1.5rem;
+  }
+  
+  .caseTitle {
+    font-size: 1.5rem;
   }
 }

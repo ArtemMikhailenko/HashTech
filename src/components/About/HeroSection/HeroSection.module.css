@@ -5,42 +5,43 @@
     align-items: center;
     min-height: 80vh;
     background: #262626;
-    background-image: url('/images/dot-pattern.png');
+    background-image: url('/images/dot-pattern2.png');
     padding: 2rem;
     font-family: "Roboto Mono", sans-serif;
     color: #fff;
   }
   
   .heroContent {
-    max-width: 1200px;
+    max-width: 1130px;
     width: 100%;
+    margin: 0 auto;
     text-align: left;
     padding-top: 2rem;
+    padding-left: 20px;
+
   }
   
   .title {
-    font-size: 3.5rem;
-    font-weight: 500;
-    line-height: 1.2;
+    font-weight: 600;
+    font-size: 55px;
+    line-height: 124%;
+    color: #eeebe2;
+    font-family: "Inter", sans-serif;;
     margin-bottom: 1.5rem;
   }
   
-  .titlePrefix, .titleSuffix {
-    color: #ffffff;
-  }
-  
   .pixelText {
-    font-family: monospace;
+    font-family: "Pixelify Sans", sans-serif;;
     color: #8FD694;
-    display: block;
-    margin: 0.5rem 0;
   }
   
   .description {
-    font-size: 1.2rem;
-    color: #ffffff;
-    max-width: 800px;
-    line-height: 1.6;
+    font-weight: 700;
+    font-size: 22px;
+    font-family: "Roboto Mono", sans-serif;;
+    line-height: 123%;
+    letter-spacing: -0.02em;
+    color: #eeebe2;
     margin-top: 1.5rem;
   }
   

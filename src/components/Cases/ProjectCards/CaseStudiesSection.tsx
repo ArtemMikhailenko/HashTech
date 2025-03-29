@@ -24,9 +24,9 @@ const CaseStudiesSection: React.FC = () => {
       cost: '40,000$',
       services: ['Development', 'Design', 'Marketing'],
       sectors: [
-        { name: 'Blockchain', backgroundColor: '#8a9ab6' },
-        { name: 'Play-to-Earn (P2E)', backgroundColor: '#a8c8b0' },
-        { name: 'Cryptocurrency', backgroundColor: '#bba8c8' }
+        { name: 'Blockchain', backgroundColor: '#8595ad' },
+        { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
+        { name: 'Cryptocurrency', backgroundColor: '#ad85ac' }
       ]
     },
     {
@@ -35,9 +35,9 @@ const CaseStudiesSection: React.FC = () => {
       cost: '105,000',
       services: ['Development', 'Design'],
       sectors: [
-        { name: 'Blockchain', backgroundColor: '#8a9ab6' },
-        { name: 'Gamification', backgroundColor: '#a8c8b0' },
-        { name: 'Community Growth', backgroundColor: '#bba8c8' }
+        { name: 'Blockchain', backgroundColor: '#8595ad' },
+        { name: 'Gamification', backgroundColor: '#85ad8a' },
+        { name: 'Community Growth', backgroundColor: '#ad85ac' }
       ]
     },
     {
@@ -46,9 +46,9 @@ const CaseStudiesSection: React.FC = () => {
       cost: '25,000',
       services: ['Design'],
       sectors: [
-        { name: 'Blockchain', backgroundColor: '#8a9ab6' },
-        { name: 'Play-to-Earn (P2E)', backgroundColor: '#a8c8b0' },
-        { name: 'NFT', backgroundColor: '#bba8c8' }
+        { name: 'Blockchain', backgroundColor: '#8595ad' },
+        { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
+        { name: 'NFT', backgroundColor: '#ad85ac' }
       ]
     },
     {
@@ -57,9 +57,9 @@ const CaseStudiesSection: React.FC = () => {
       cost: '25,000',
       services: ['Design', 'Animation'],
       sectors: [
-        { name: 'Blockchain', backgroundColor: '#8a9ab6' },
-        { name: 'DeFi', backgroundColor: '#a8c8b0' },
-        { name: 'NFT', backgroundColor: '#bba8c8' }
+        { name: 'Blockchain', backgroundColor: '#8595ad' },
+        { name: 'DeFi', backgroundColor: '#85ad8a' },
+        { name: 'NFT', backgroundColor: '#ad85ac' }
       ]
     }
   ];
@@ -72,7 +72,9 @@ const CaseStudiesSection: React.FC = () => {
             <div key={index} className={styles.caseCard}>
               <div className={styles.caseCardInner}>
                 <div className={styles.folded}></div>
-                
+                <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 45.6968V2.9998L59 59.9998H16.303C8.40368 59.9998 2 53.5961 2 45.6968Z" fill="#FBF8F0" stroke="black" stroke-width="2.38384" />
+                </svg>
                 <h3 className={styles.caseTitle}>{caseStudy.title}</h3>
                 <p className={styles.caseDescription}>{caseStudy.description}</p>
                 

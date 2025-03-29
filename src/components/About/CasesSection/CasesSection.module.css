@@ -2,14 +2,14 @@
 .casesSection {
     position: relative;
     background-color: #262626;
-    background-image: url('/images/dot-pattern.png');
-    padding: 4rem 0 0;
+    background-image: url('/images/dot-pattern2.png');
+    padding: 5rem 0 0;
     overflow: hidden;
     font-family: "Roboto Mono", monospace;
   }
   
   .container {
-    max-width: 1200px;
+    max-width: 1220px;
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
@@ -29,18 +29,20 @@
   }
   
   .pixelText {
-    font-family: monospace;
+    font-family: "Pixelify Sans", sans-serif;;
     letter-spacing: -1px;
   }
   
   .allButton {
     display: inline-block;
-    padding: 0.6rem 1.5rem;
+    padding:  13px 20px;
     border: 1px solid #f2f0e8;
-    color: #222;
+    font-weight: 700;
+    font-size: 28px;
+    text-align: center;
+    color: #252628;
     text-decoration: none;
     background-color: #f2f0e8;
-    font-size: 1rem;
     transition: all 0.3s ease;
     position: relative;
     box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
@@ -68,7 +70,7 @@
     border-radius: 15px;
     overflow: hidden;
     position: relative;
-    height: 360px;
+    height: 327px;
     transition: all 0.3s ease;
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
   }
@@ -98,9 +100,10 @@
   }
   
   .cardTitle {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin: 0 0 1rem;
+    font-weight: 700;
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: #1a1a1a;
     font-family: "Roboto Mono", monospace;
   }
   
@@ -128,10 +131,11 @@
   }
   
   .cardDescription {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: auto;
-    white-space: pre-line;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    color: #0e0c16;
   }
   
   .cardDescription strong {

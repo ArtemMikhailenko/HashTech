@@ -1,13 +1,15 @@
 .casesSection {
     position: relative;
-    background-color: #f2f0e8;
+    background-color: #eeebe2;
     padding: 4rem 0 0;
     overflow: hidden;
     font-family: "Roboto Mono", monospace;
   }
   
+
+
   .container {
-    max-width: 1200px;
+    max-width: 1220px;
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
@@ -23,29 +25,32 @@
   .title {
     font-size: 2.5rem;
     font-weight: 500;
-    color: #222;
+    color: #252628;
   }
   
   .pixelText {
-    font-family: monospace;
+    font-family: "Pixelify Sans", sans-serif;;
     letter-spacing: -1px;
   }
   
   .allButton {
     display: inline-block;
-    padding: 0.6rem 1.5rem;
-    border: 1px solid #222;
-    color: #222;
+    padding:  13px 20px;
+    border: 1px solid #eeebe2;
+    font-weight: 700;
+    font-size: 28px;
+    text-align: center;
+    color: #252628;
     text-decoration: none;
-    font-size: 1rem;
+    background-color: #f2f0e8;
     transition: all 0.3s ease;
     position: relative;
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
-  }
-  
+    border: 1px solid #222;
+    box-shadow: 4px 4px 0 0 #000;
+    background: #eeebe2;
+  }  
   .allButton:hover {
-    background-color: #222;
-    color: #f2f0e8;
+    background-color: #f2f0e8;
     transform: translateY(-3px);
     box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
   }
@@ -66,7 +71,7 @@
     border-radius: 15px;
     overflow: hidden;
     position: relative;
-    height: 360px;
+    height: 327px;
     transition: all 0.3s ease;
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
   }
@@ -96,9 +101,10 @@
   }
   
   .cardTitle {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin: 0 0 1rem;
+    font-weight: 700;
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: #1a1a1a;
     font-family: "Roboto Mono", monospace;
   }
   
@@ -126,15 +132,88 @@
   }
   
   .cardDescription {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: auto;
-    white-space: pre-line;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    color: #0e0c16;
   }
   
   .cardDescription strong {
     color: white;
     font-weight: 600;
+  }
+  
+.discoverButton {
+    display: inline-block;
+    padding: 0.7rem 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: #222;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  
+  .discoverButton::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover .discoverButton {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .discoverButton:hover {
+    transform: translateY(-2px) !important;
+  }
+  
+  .discoverButton:hover::after {
+    right: -7px;
+    bottom: -7px;
+  }
+  .pixelPatternContainer {
+    width: 100%;
+    position: relative;
+    bottom: -20px;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .pixelPattern {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  @media (max-width: 1200px) {
+    .cardsContainer {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cardsContainer {
+      grid-template-columns: 1fr;
+    }
+    
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
   }
   
   .discoverButton {

@@ -1,24 +1,13 @@
 .unlockSection {
-    background-color: #222;
+    background-color: #262626;
     color: white;
-    padding: 5rem 0;
+    background-image: url('/images/dot-pattern2.png');
+    padding: 4rem 0;
     font-family: "Roboto Mono", monospace;
     position: relative;
   }
   
-  .unlockSection::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('/images/dot-pattern.png');
-    background-size: 4px 4px;
-    background-repeat: repeat;
-    opacity: 0.1;
-    pointer-events: none;
-  }
+
   
   .container {
     max-width: 1200px;
@@ -31,35 +20,41 @@
   }
   
   .title {
-    font-size: 4rem;
-    font-weight: 500;
-    line-height: 1.1;
+    font-weight: 700;
+    font-size: 65px;
+    line-height: 118%;
+    text-align: center;
+    color: #e6ecf2;
     margin-bottom: 2rem;
     text-align: center;
   }
   
   .description {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #eee;
-    max-width: 800px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: #e6ecf2;
+    max-width: 840px;
     margin: 0 auto 3rem;
     text-align: center;
   }
   
   .consultationButton {
     display: inline-block;
-    background-color: #a99bb0;
-    color: #222;
+    font-weight: 900;
+    font-size: 24px;
+    color: #252525;
     padding: 1rem 2rem;
-    font-size: 1.1rem;
     text-decoration: none;
-    font-weight: 500;
     transition: all 0.3s ease;
     min-width: 300px;
     width: 70%;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 0 0 #000;
+    background: #9b7c9a;
+    opacity: 0.9;
   }
   
   .consultationButton:hover {

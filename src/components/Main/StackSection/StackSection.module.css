@@ -1,161 +1,241 @@
 .stackSection {
-    position: relative;
-    background-color: #f2f0e8;
-    padding: 0;
-    overflow: hidden;
-    min-height: 100vh;
-    font-family: "Roboto Mono", monospace;
+  position: relative;
+  background-color: #eeebe2;
+  padding: 0;
+  overflow: hidden;
+  min-height: 100vh;
+  font-family: "Roboto Mono", monospace;
+}
+
+.pixelPatternContainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.pixelPattern {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 3rem 0;
+  color: #222;
+  font-family: "Roboto Mono", monospace;
+}
+
+.stackCard {
+  display: flex;
+  width: 100%;
+  border: 2px solid #333;
+  border-radius: 10px;
+  position: relative;
+  background-color: #eeebe2;
+  padding: 20px 30px;
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - 58px) 0%,
+    100% 56px,
+    100% 100%,
+    0% 100%
+  );
+}
+
+.stackInfo {
+  flex: 1;
+  color: #252525;
+  padding-right: 2rem;
+}
+
+.stackHeader {
+  position: relative;
+}
+
+.stackHeader h3 {
+  font-weight: 700;
+  font-size: 28px;
+  color: #252525;
+  padding-bottom: 10px;
+}
+
+.stackCard svg {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  z-index: 3;
+}
+
+.stackText{
+  display: flex;
+  justify-content: space-between;
+}
+
+.stackDetails p {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 144%;
+  letter-spacing: -0.02em;
+  color: #262626;
+  margin: 5px 0;
+}
+
+.stackDetails p span {
+  font-weight: 700;
+  display: inline-block;
+  color: #6c6c6c;
+  padding-left: 10px;
+}
+
+.stackDescription {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #252525;
+  max-width: 470px;
+}
+
+.stackDescription p {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  color: #262626;
+}
+
+.legoContainer {
+  position: relative;
+  height: 500px;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  perspective: 1000px;
+}
+
+.legoItem {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  will-change: transform, left, top, opacity;
+}
+
+.legoItem p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #333;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+.legoItem:hover p {
+  opacity: 1;
+}
+
+/* Responsive adjustments for lego container */
+@media (max-width: 1200px) {
+  .legoContainer {
+    height: 450px;
+  }
+}
+
+@media (max-width: 992px) {
+  .legoContainer {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .legoContainer {
+    height: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .legoContainer {
+    height: 300px;
+  }
+}
+
+/* Animation for stacked lego pieces */
+@keyframes stackPiece {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .stackText {
+    flex-direction: column;
   }
   
-  .pixelPatternContainer {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .pixelPattern {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
+  .stackDescription {
+    margin-top: 1.5rem;
+    max-width: 100%;
   }
   
   .sectionTitle {
     font-size: 2rem;
-    font-weight: 500;
-    margin: 3rem 0;
-    color: #222;
-    font-family: "Roboto Mono", monospace;
   }
-  
+}
+
+@media (max-width: 768px) {
   .stackCard {
-    display: flex;
-    width: 90%;
-    max-width: 1000px;
-    margin: 2rem 0 4rem;
-    border: 1px solid #333;
-    border-radius: 5px;
-    position: relative;
-    background-color: #f2f0e8;
+    flex-direction: column;
+    padding: 1.5rem;
   }
   
   .stackInfo {
-    flex: 1;
-    padding: 1.5rem;
-    color: #252525;
-  }
-  
-  .stackHeader {
-    position: relative;
+    padding-right: 0;
     margin-bottom: 1rem;
   }
   
-  .stackHeader h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin: 0 0 1rem;
-  }
-  
-  .cardCorner {
-    position: absolute;
-    top: -22px;
-    right: -22px;
-    width: 20px;
-    height: 20px;
-    border-right: 1px solid #333;
-    border-top: 1px solid #333;
-    transform: rotate(45deg);
-    background-color: #f2f0e8;
-    
-  }
-  
-  .stackDetails p {
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    
-  }
-  
   .stackDetails p span {
-    font-weight: 500;
+    display: block;
+    padding-left: 0;
+    margin-top: 5px;
   }
   
-  .stackDescription {
-    flex: 1;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    color: #252525;
+  .sectionTitle {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
+
+/* Special case for extremely small screens */
+@media (max-width: 400px) {
+  .container {
+    padding: 0 1rem;
   }
   
+  .stackCard {
+    padding: 1rem;
+  }
+  
+  .stackHeader h3 {
+    font-size: 22px;
+  }
+  
+  .stackDetails p, 
   .stackDescription p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 14px;
   }
-  
-  .legoContainer {
-    position: relative;
-    height: 400px;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
-  }
-  
-  .legoItem {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .legoItem p {
-    margin-top: 0.5rem;
-    font-size: 0.8rem;
-    line-height: 1.3;
-    color: #333;
-  }
-  
-  .cursor {
-    position: absolute;
-    right: 400px;
-    top: 180px;
-    z-index: 10;
-    animation: float 2s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .stackCard {
-      flex-direction: column;
-    }
-    
-    .legoContainer {
-      height: auto;
-    }
-    
-    .legoItem {
-      position: relative;
-      left: auto !important;
-      top: auto !important;
-      right: auto !important;
-      margin-bottom: 2rem;
-    }
-    
-    .cursor {
-      display: none;
-    }
-  }
+}

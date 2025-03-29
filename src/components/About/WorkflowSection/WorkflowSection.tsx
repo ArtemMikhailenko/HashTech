@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styles from './WorkflowSection.module.css';
 
@@ -12,13 +13,44 @@ import arrowRight from '../../../../public/images/workflow/arrow-right.png';
 import pixelPattern from '../../../../public/images/pixel-pattern.png';
 
 const WorkflowSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visibleSteps, setVisibleSteps] = useState(0);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const sectionTop = sectionRef.current.getBoundingClientRect().top;
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const windowHeight = window.innerHeight;
+      
+      // Calculate how far through the section we've scrolled (0 to 1)
+      const scrollProgress = Math.min(
+        Math.max(0, (windowHeight - sectionTop) / (sectionHeight + windowHeight)),
+        1
+      );
+      
+      // Map scroll progress to number of visible steps (0 to 5)
+      // We divide by 0.8 to ensure all steps are visible when we've scrolled 80% through
+      const stepsToShow = Math.floor(scrollProgress / 0.8 * 8);
+      setVisibleSteps(stepsToShow);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
   return (
-    <section className={styles.workflowSection}>
+    <section className={styles.workflowSection} ref={sectionRef}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>/Work Flow - From Idea to Execution /</h2>
         
         <div className={styles.workflowSteps}>
-          <div className={styles.step}>
+          <div className={`${styles.step} ${visibleSteps >= 1 ? styles.visible : ''}`}>
             <div className={styles.cubeImage}>
               <Image 
                 src={cube1} 
@@ -41,7 +73,7 @@ const WorkflowSection: React.FC = () => {
             </div>
           </div>
           
-          <div className={styles.step}>
+          <div className={`${styles.step} ${visibleSteps >= 2 ? styles.visible : ''}`}>
             <div className={styles.cubeImage}>
               <Image 
                 src={cube2} 
@@ -64,7 +96,7 @@ const WorkflowSection: React.FC = () => {
             </div>
           </div>
           
-          <div className={styles.step}>
+          <div className={`${styles.step} ${visibleSteps >= 3 ? styles.visible : ''}`}>
             <div className={styles.cubeImage}>
               <Image 
                 src={cube3} 
@@ -87,7 +119,7 @@ const WorkflowSection: React.FC = () => {
             </div>
           </div>
           
-          <div className={styles.step}>
+          <div className={`${styles.step} ${visibleSteps >= 4 ? styles.visible : ''}`}>
             <div className={styles.cubeImage}>
               <Image 
                 src={cube4} 
@@ -110,7 +142,7 @@ const WorkflowSection: React.FC = () => {
             </div>
           </div>
           
-          <div className={styles.step}>
+          <div className={`${styles.step} ${visibleSteps >= 5 ? styles.visible : ''}`}>
             <div className={styles.cubeImage}>
               <Image 
                 src={cube5} 

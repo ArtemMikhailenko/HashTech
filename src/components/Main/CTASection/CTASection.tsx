@@ -9,7 +9,7 @@ const CTASection: React.FC = () => {
         <h2 className={styles.title}>
           We're always on<br />
           the lookout <span className={styles.pixelText}>for</span> an<br />
-          interesting <span className={styles.projectText}>[projekt]</span>
+          interesting <span className={styles.projectText}>[ˈprɒdʒekt]</span>
         </h2>
         
         <div className={styles.ctaContent}>
@@ -22,7 +22,8 @@ const CTASection: React.FC = () => {
           </Link>
           
           <div className={styles.rightText}>
-            <p>If you are the founder of a successful project and need outsourcing solutions</p>
+            <p>If you are the founder of a successful 
+            project and need outsourcing solutions</p>
           </div>
         </div>
       </div>

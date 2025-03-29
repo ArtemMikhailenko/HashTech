@@ -1,54 +1,41 @@
 .aboutSection {
-    background-color: #f2f0e8;
+    background-color: #fdfcf7;
     color: white;
     padding: 5rem 0;
     font-family: "Roboto Mono", monospace;
     position: relative;
   }
-  
-  .aboutSection::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-size: 4px 4px;
-    background-repeat: repeat;
-    opacity: 0.05;
-    pointer-events: none;
-  }
-  
+    
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 2rem;
     background-color: #222;
     background-image: url('/images/dot-pattern.png');
 
   }
   
   .content {
-   
     max-width: 900px;
-    /* padding: 60px 120px; */
-    margin: 0 auto;
-
+    padding-top: 70px;
+    padding-left: 70px;
+    padding-bottom: 110px;
   }
   
   .title {
-    font-size: 2.5rem;
-    font-weight: 500;
-    margin-bottom: 2.5rem;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 225%;
+    color: #eeebe2;
     display: flex;
     align-items: center;
     gap: 1rem;
   }
   
   .pronunciation {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #888;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 225%;
+    color: #797979;
   }
   
   .description {
