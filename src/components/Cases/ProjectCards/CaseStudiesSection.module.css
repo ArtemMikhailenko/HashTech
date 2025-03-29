@@ -30,7 +30,7 @@
 
 }
 .caseCard:hover {
-  background-image: url('/images/job.png');
+  background-image: url('/images/cases/minner.png');
   
 }
 .caseCard:hover .caseCardInner{
