@@ -1,217 +1,358 @@
-
 .casesSection {
-    position: relative;
-    background-color: #262626;
-    background-image: url('/images/dot-pattern2.png');
-    padding: 5rem 0 0;
-    overflow: hidden;
-    font-family: "Roboto Mono", monospace;
+  position: relative;
+  background-color: #242424;
+  background-image: url('/images/dot-pattern2.png');
+  padding: 5rem 0 0;
+  overflow: hidden;
+  font-family: "Roboto Mono", monospace;
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #f2f0e8;
+}
+
+.pixelText {
+  font-family: "Pixelify Sans", sans-serif;
+  letter-spacing: -1px;
+}
+
+.allButton {
+  display: inline-block;
+  padding: 13px 20px;
+  border: 1px solid #f2f0e8;
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  color: #252628;
+  text-decoration: none;
+  background-color: #f2f0e8;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.allButton:hover {
+  background-color: #f2f0e8;
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Desktop cards grid */
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  height: 327px;
+  transition: all 0.3s ease;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.cardsContainer .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3);
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 1;
+}
+
+.cardContent {
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.cardTitle {
+  font-weight: 700;
+  padding-bottom: 10px;
+  font-size: 24px;
+  color: #1a1a1a;
+  font-family: "Roboto Mono", monospace;
+}
+
+.tags {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.cardsContainer .card:hover .tags {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+
+.cardDescription {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #0e0c16;
+}
+
+.cardDescription strong {
+  color: white;
+  font-weight: 600;
+}
+
+.discoverButton {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  color: #222;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.discoverButton::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.cardsContainer .card:hover .discoverButton {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.discoverButton:hover {
+  transform: translateY(-2px) !important;
+}
+
+.discoverButton:hover::after {
+  right: -7px;
+  bottom: -7px;
+}
+
+/* Mobile slider styles */
+.mobileSliderContainer {
+  width: 100%;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiperSlide {
+  padding: 0 1px;
+}
+
+.swiperSlide .card {
+  margin: 0 auto;
+  border-radius: 25px;
+  height: auto;
+  aspect-ratio: 1 / 1.2;
+  max-width: 600px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.swiperSlide .cardContent {
+  padding: 2rem;
+}
+
+/* Mobile tap/active effects - initially hidden */
+.swiperSlide .tags {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.swiperSlide .discoverButton {
+  display: inline-block;
+  padding: 0.7rem 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  color: #222;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.swiperSlide .discoverButton::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+/* Show on .activeCard (toggled by tap) */
+.swiperSlide .activeCard .tags {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.swiperSlide .activeCard .discoverButton {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navigation buttons for mobile slider */
+.navigationButtons {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  bottom: -140px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.navButton {
+  width: 30px;
+  height: 30px;
+  background-color: #f2f0e8;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.navButton svg {
+  fill: #242424;
+  width: 50px !important;
+  height: 50px !important;
+  transition: transform 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: #e5e3db;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .container {
-    max-width: 1220px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-  }
-  
+}
+
+@media (max-width: 768px) {
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
+    gap: 1rem;
   }
   
   .title {
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #f2f0e8;
-  }
-  
-  .pixelText {
-    font-family: "Pixelify Sans", sans-serif;;
-    letter-spacing: -1px;
+    font-size: 2.2rem;
   }
   
   .allButton {
-    display: inline-block;
-    padding:  13px 20px;
-    border: 1px solid #f2f0e8;
-    font-weight: 700;
-    font-size: 28px;
-    text-align: center;
-    color: #252628;
-    text-decoration: none;
-    background-color: #f2f0e8;
-    transition: all 0.3s ease;
-    position: relative;
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px 15px;
+    font-size: 22px;
   }
-  
-  .allButton:hover {
-    background-color: #f2f0e8;
-    transform: translateY(-3px);
-    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
-  }
-  
+
   .cardsContainer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    display: none;
   }
-  
-  .cardLink {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .card {
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-    height: 327px;
-    transition: all 0.3s ease;
-    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3);
-  }
-  
-  .backgroundImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 1;
-  }
-  
-  .cardContent {
-    padding: 1.5rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .cardTitle {
-    font-weight: 700;
-    padding-bottom: 10px;
-    font-size: 24px;
-    color: #1a1a1a;
-    font-family: "Roboto Mono", monospace;
-  }
-  
-  .tags {
-    display: flex;
-    gap: 0.8rem;
-    margin-bottom: 1rem;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-  }
-  
-  .card:hover .tags {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .tag {
-    display: inline-block;
-    padding: 0.4rem 1rem;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    font-size: 0.9rem;
-    border-radius: 3px;
-  }
-  
-  .cardDescription {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 129%;
-    letter-spacing: -0.02em;
-    color: #0e0c16;
-  }
-  
-  .cardDescription strong {
-    color: white;
-    font-weight: 600;
-  }
-  
-  .discoverButton {
-    display: inline-block;
-    padding: 0.7rem 2rem;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    color: #222;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    margin-top: 1.5rem;
-    transition: all 0.3s ease;
-    position: relative;
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  
-  .discoverButton::after {
-    content: "";
-    position: absolute;
-    right: -5px;
-    bottom: -5px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.15);
-    z-index: -1;
-    transition: all 0.3s ease;
-  }
-  
-  .card:hover .discoverButton {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .discoverButton:hover {
-    transform: translateY(-2px) !important;
-  }
-  
-  .discoverButton:hover::after {
-    right: -7px;
-    bottom: -7px;
-  }
-  
-  .pixelPatternContainer {
-    width: 100%;
-    position: relative;
-    bottom: -20px;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .pixelPattern {
-    width: 100%;
+  .swiperSlide .card{
     height: auto;
-    object-fit: cover;
-  }
-  @media (max-width: 1200px) {
-    .cardsContainer {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    width: 100%;
   }
   
-  @media (max-width: 768px) {
-    .cardsContainer {
-      grid-template-columns: 1fr;
-    }
-    
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-    }
+  .navigationButtons {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    left: -20px;
+    bottom: -10px;
   }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .allButton {
+    padding: 8px 12px;
+    font-size: 18px;
+  }
+  
+  .swiperSlide .card{
+    height: 327px;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './WhyChooseSection.module.css';
 
 import pixelPattern from '../../../../public/images/pixel-pattern.png';
+import dots from '../../../../public/images/dot-pattern2.png'
 
 const WhyChooseSection: React.FC = () => {
   return (
@@ -12,8 +13,13 @@ const WhyChooseSection: React.FC = () => {
           src={pixelPattern} 
           alt="Pixel Pattern" 
           className={styles.pixelPattern}
-          width={1200}
-          height={150}
+          layout="responsive"
+        />
+        <Image 
+          src={dots} 
+          alt="dots" 
+          className={styles.dots}
+          layout="responsive"
         />
       </div>
       
@@ -22,7 +28,7 @@ const WhyChooseSection: React.FC = () => {
         
         <div className={styles.featuresGrid}>
           <div className={styles.featureCard}>
-            <div className={styles.cardWrapper}>
+            <div className={styles.cardWrapper}  style={{ '--hover-image': `url(/images/why-choose/img2.png)` } as React.CSSProperties}>
               <div className={styles.cardContent}>
                 <h3 className={styles.featureTitle}>From idea to execution</h3>
                 <p className={styles.featureDescription}>
@@ -39,7 +45,7 @@ const WhyChooseSection: React.FC = () => {
           </div>
           
           <div className={styles.featureCard}>
-            <div className={styles.cardWrapperR}>
+            <div className={styles.cardWrapperR}  style={{ '--hover-image': `url(/images/why-choose/img3.png)` } as React.CSSProperties}>
               <div className={styles.cardContentR}>
                 <h3 className={styles.featureTitle}>Agile & Scalable Development</h3>
                 <p className={styles.featureDescription}>
@@ -56,7 +62,7 @@ const WhyChooseSection: React.FC = () => {
           </div>
           
           <div className={styles.featureCard}>
-            <div className={styles.cardWrapper}>
+            <div className={styles.cardWrapper}  style={{ '--hover-image': `url(/images/why-choose/img1.png)` } as React.CSSProperties}>
               <div className={styles.cardContent}>
                 <h3 className={styles.featureTitle}>Expertise that delivers</h3>
                 <p className={styles.featureDescription}>
@@ -73,7 +79,7 @@ const WhyChooseSection: React.FC = () => {
           </div>
           
           <div className={styles.featureCard}>
-            <div className={styles.cardWrapperR}>
+            <div className={styles.cardWrapperR}  style={{ '--hover-image': `url(/images/why-choose/img4.png)` } as React.CSSProperties}>
               <div className={styles.cardContentR}>
                 <h3 className={styles.featureTitle}>Trust & Security First</h3>
                 <p className={styles.featureDescription}>

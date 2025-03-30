@@ -10,6 +10,7 @@
   width: 100%;
   overflow: hidden;
   margin-bottom: 3rem;
+  position: relative;
 }
 
 .pixelPattern {
@@ -17,7 +18,12 @@
   height: auto;
   object-fit: cover;
 }
-
+.dots{
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -60,7 +66,10 @@
 }
 .cardWrapper:hover,
 .cardWrapperR:hover {
-  background-image: url('/images/job.png');
+  background-image: var(--hover-image);
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
 }
 
 .cardWrapper:hover .cardContent {
@@ -92,6 +101,8 @@
   right: 10px;
   z-index: 3;
   rotate: 3deg;
+  transition: all 0.3s ease;
+
 }
 .cardWrapperR svg{
   position: absolute;
@@ -99,6 +110,8 @@
   left: 20px;
   z-index: 3;
   rotate: -7deg;
+  transition: all 0.3s ease;
+
 }
 .cardWrapperR{
   text-align: right;
@@ -120,6 +133,8 @@
 		100% 40px,
 		100% 100%,
 		0% 100%);
+    transition: all 0.3s ease;
+
 }
 .cardContentR {
   position: absolute;
@@ -133,12 +148,14 @@
   padding: 30px;
   z-index: 2;
   clip-path: polygon(
-  54px 0%,      /* Точка 1: отступ 40px от левого края в верхней части */
-  100% 0%,      /* Точка 2: правый верхний угол */
-  100% 100%,    /* Точка 3: правый нижний угол */
-  0% 100%,     /* Точка 4: левый нижний угол */
-  0% 50px      /* Точка 5: отступ 40px от верхнего края по левой стороне */
+  54px 0%,    
+  100% 0%,    
+  100% 100%,   
+  0% 100%,    
+  0% 50px 
 );
+transition: all 0.3s ease;
+;
 }
 .featureTitle {
   font-weight: 700;
@@ -173,7 +190,7 @@
 @media (max-width: 1024px) {
   .featuresGrid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 4rem;
   }
   
   .featureTitle {
@@ -192,19 +209,20 @@
   }
   
   .featureTitle {
-    font-size: 1.5rem;
+    font-size: 16px;
   }
   
   .featureDescription {
-    font-size: 0.95rem;
+    font-size: 12px;
   }
   
-  .dogEar {
-    width: 40px;
-    height: 40px;
-  }
+  .cardWrapper svg{
+    position: absolute;
+    top: 38px;
+    right: 1px;
+    z-index: 3;
+    rotate: 3deg;
+    transition: all 0.3s ease;
   
-  .dogEar:after {
-    border-width: 0 40px 40px 0;
   }
 }

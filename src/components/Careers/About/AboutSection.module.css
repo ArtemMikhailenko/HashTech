@@ -51,10 +51,7 @@
   
   /* Responsive styling */
   @media (max-width: 768px) {
-    .aboutSection {
-      margin: 1rem;
-      padding: 3rem 0;
-    }
+  
     
     .title {
       font-size: 2rem;
@@ -62,7 +59,10 @@
       align-items: flex-start;
       gap: 0.5rem;
     }
-    
+    .content{
+      padding-left: 30px;
+      padding-right: 30px;
+    }
     .pronunciation {
       font-size: 1.2rem;
     }

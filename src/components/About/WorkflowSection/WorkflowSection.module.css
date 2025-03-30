@@ -1,7 +1,9 @@
 .workflowSection {
   background-color: #f2f0e8;
   font-family: "Roboto Mono", monospace;
-  min-height: 100vh; /* Make section taller to enable more scrolling */
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 .container {
@@ -9,7 +11,8 @@
   margin: 0 auto;
   padding: 10rem 2rem;
   position: sticky;
-  top: 10vh; /* Keep content in view while scrolling */
+  top: 10vh;
+  z-index: 2;
 }
 
 .sectionTitle {
@@ -20,6 +23,7 @@
   color: #222;
 }
 
+/* Desktop workflow steps */
 .workflowSteps {
   display: flex;
   justify-content: space-between;
@@ -75,31 +79,7 @@
   color: #333;
 }
 
-.topArrow, .bottomArrow {
-  position: absolute;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 0.6s ease 0.6s; /* Delayed appearance for arrows */
-}
-
-.step.visible .topArrow,
-.step.visible .bottomArrow {
-  opacity: 1;
-}
-
-.topArrow {
-  top: -30px;
-  right: -100px;
-  z-index: 1;
-}
-
-.bottomArrow {
-  bottom: -30px;
-  right: -100px;
-  z-index: 1;
-  transform: scaleY(-1);
-}
-
+/* Background patterns */
 .pixelPatternContainer {
   position: relative;
   bottom: -10px;
@@ -115,10 +95,101 @@
   rotate: 180deg;
 }
 
+.dots {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+/* Mobile slider styles */
+.mobileSliderContainer {
+  width: 100%;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiperSlide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobileStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Pagination dots */
+.paginationDots {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.paginationDot {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+.paginationDot::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #e7e5dd;
+  border: 1px solid #d0cec7;
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.activeDot::before {
+  background-color: #e7e5dd;
+  border: 1px solid #222;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dotInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  z-index: 1;
+}
+
+.activeDot .dotInner {
+  background-color: #000;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1100px) {
   .workflowSection {
-    min-height: 200vh; /* Even taller on mobile for better scrolling effect */
+    min-height: 200vh; /* Taller on larger screens for better scrolling effect */
   }
   
   .workflowSteps {
@@ -129,20 +200,66 @@
   
   .step {
     max-width: 400px;
-    transform: translateY(30px); /* Vertical animation on mobile */
+    transform: translateY(30px); /* Vertical animation on tablets */
   }
   
   .step.visible {
     transform: translateY(0);
   }
-  
-  .topArrow, .bottomArrow {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
+  .workflowSection {
+    min-height: unset;
+  }
+  
+  .container {
+    position: relative;
+    top: 0;
+    padding: 4rem 1rem;
+  }
+  
   .sectionTitle {
     font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .mobileStep {
+    text-align: center;
+  }
+  
+  .mobileStep .cubeImage {
+    margin-bottom: 1rem;
+  }
+  
+  .mobileStep .stepTitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+  
+  .mobileStep .stepDescription {
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+  
+  .paginationDots {
+    gap: 10px;
+  }
+  
+  .paginationDot {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .dotInner {
+    width: 10px;
+    height: 10px;
   }
 }

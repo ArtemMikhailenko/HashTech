@@ -3,20 +3,52 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styles from './WorkflowSection.module.css';
 
-// Import cube images - you'll need to create these
+// Import cube images and assets
 import cube1 from '../../../../public/images/workflow/cube1.png';
 import cube2 from '../../../../public/images/workflow/cube2.png';
 import cube3 from '../../../../public/images/workflow/cube3.png';
 import cube4 from '../../../../public/images/workflow/cube4.png';
 import cube5 from '../../../../public/images/workflow/cube5.png';
-import arrowRight from '../../../../public/images/workflow/arrow-right.png';
 import pixelPattern from '../../../../public/images/pixel-pattern.png';
+import dots from '../../../../public/images/dot-pattern2.png';
+
+// Import Swiper components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const WorkflowSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visibleSteps, setVisibleSteps] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [swiper, setSwiper] = useState<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   
+  // Check if client-side and handle window resize
   useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkIsMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+  
+  // Handle scroll animation for desktop
+  useEffect(() => {
+    if (isMobile) return; // Skip scroll animation on mobile
+    
     const handleScroll = () => {
       if (!sectionRef.current) return;
       
@@ -42,127 +74,122 @@ const WorkflowSection: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isMobile]);
+  
+  // Workflow step data
+  const workflowSteps = [
+    {
+      image: cube1,
+      title: "Discovery & Consultation",
+      description: "We start by understanding your vision, business goals, and technical requirements to ensure the best approach",
+    },
+    {
+      image: cube2,
+      title: "Team Assembly",
+      description: "We handpick top-tier Web3 specialists tailored to your project's needs, ensuring efficiency and expertise",
+    },
+    {
+      image: cube3,
+      title: "Planning & Estimation",
+      description: "We define the development roadmap, estimate timelines and costs, and align expectations to keep the process transparent",
+    },
+    {
+      image: cube4,
+      title: "Agile Development",
+      description: "Our team builds, tests, and iterates in short cycles, ensuring flexibility and seamless progress toward the final product",
+    },
+    {
+      image: cube5,
+      title: "Deployment & Scaling",
+      description: "Once ready, we launch your solution with security audits, performance optimization, and post-launch support to scale effectively",
+    }
+  ];
   
   return (
     <section className={styles.workflowSection} ref={sectionRef}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>/Work Flow - From Idea to Execution /</h2>
         
-        <div className={styles.workflowSteps}>
-          <div className={`${styles.step} ${visibleSteps >= 1 ? styles.visible : ''}`}>
-            <div className={styles.cubeImage}>
-              <Image 
-                src={cube1} 
-                alt="Discovery & Consultation" 
-                width={180} 
-                height={180} 
-              />
-            </div>
-            <h3 className={styles.stepTitle}>Discovery & Consultation</h3>
-            <p className={styles.stepDescription}>
-              We start by understanding your vision, business goals, and technical requirements to ensure the best approach
-            </p>
-            <div className={styles.bottomArrow}>
-              <Image
-                src={arrowRight}
-                alt="Next step"
-                width={120}
-                height={30}
-              />
+        {/* Desktop steps */}
+        {!isMobile && (
+          <div className={styles.workflowSteps}>
+            {workflowSteps.map((step, index) => (
+              <div 
+                key={`desktop-step-${index}`} 
+                className={`${styles.step} ${visibleSteps >= index + 1 ? styles.visible : ''}`}
+              >
+                <div className={styles.cubeImage}>
+                  <Image 
+                    src={step.image} 
+                    alt={step.title} 
+                    width={180} 
+                    height={180} 
+                  />
+                </div>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDescription}>{step.description}</p>
+              </div>
+            ))}
+          </div>
+        )}
+        
+        {/* Mobile slider */}
+        {isMobile && (
+          <div className={styles.mobileSliderContainer}>
+            <Swiper
+              modules={[Pagination]}
+              spaceBetween={30}
+              slidesPerView={1}
+              onSwiper={setSwiper}
+              pagination={false}
+              onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+              className={styles.swiper}
+            >
+              {workflowSteps.map((step, index) => (
+                <SwiperSlide key={`mobile-step-${index}`} className={styles.swiperSlide}>
+                  <div className={styles.mobileStep}>
+                    <div className={styles.cubeImage}>
+                      <Image 
+                        src={step.image} 
+                        alt={step.title} 
+                        width={180} 
+                        height={180} 
+                      />
+                    </div>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepDescription}>{step.description}</p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            
+            <div className={styles.paginationDots}>
+              {workflowSteps.map((_, index) => (
+                <button 
+                  key={`dot-${index}`}
+                  className={`${styles.paginationDot} ${index === activeIndex ? styles.activeDot : ''}`}
+                  onClick={() => swiper?.slideTo(index)}
+                  aria-label={`Go to step ${index + 1}`}
+                >
+                  <div className={styles.dotInner}></div>
+                </button>
+              ))}
             </div>
           </div>
-          
-          <div className={`${styles.step} ${visibleSteps >= 2 ? styles.visible : ''}`}>
-            <div className={styles.cubeImage}>
-              <Image 
-                src={cube2} 
-                alt="Team Assembly" 
-                width={180} 
-                height={180} 
-              />
-            </div>
-            <h3 className={styles.stepTitle}>Team Assembly</h3>
-            <p className={styles.stepDescription}>
-              We handpick top-tier Web3 specialists tailored to your project's needs, ensuring efficiency and expertise
-            </p>
-            <div className={styles.topArrow}>
-              <Image
-                src={arrowRight}
-                alt="Next step"
-                width={120}
-                height={30}
-              />
-            </div>
-          </div>
-          
-          <div className={`${styles.step} ${visibleSteps >= 3 ? styles.visible : ''}`}>
-            <div className={styles.cubeImage}>
-              <Image 
-                src={cube3} 
-                alt="Planning & Estimation" 
-                width={180} 
-                height={180} 
-              />
-            </div>
-            <h3 className={styles.stepTitle}>Planning & Estimation</h3>
-            <p className={styles.stepDescription}>
-              We define the development roadmap, estimate timelines and costs, and align expectations to keep the process transparent
-            </p>
-            <div className={styles.bottomArrow}>
-              <Image
-                src={arrowRight}
-                alt="Next step"
-                width={120}
-                height={30}
-              />
-            </div>
-          </div>
-          
-          <div className={`${styles.step} ${visibleSteps >= 4 ? styles.visible : ''}`}>
-            <div className={styles.cubeImage}>
-              <Image 
-                src={cube4} 
-                alt="Agile Development" 
-                width={180} 
-                height={180} 
-              />
-            </div>
-            <h3 className={styles.stepTitle}>Agile Development</h3>
-            <p className={styles.stepDescription}>
-              Our team builds, tests, and iterates in short cycles, ensuring flexibility and seamless progress toward the final product
-            </p>
-            <div className={styles.topArrow}>
-              <Image
-                src={arrowRight}
-                alt="Next step"
-                width={120}
-                height={30}
-              />
-            </div>
-          </div>
-          
-          <div className={`${styles.step} ${visibleSteps >= 5 ? styles.visible : ''}`}>
-            <div className={styles.cubeImage}>
-              <Image 
-                src={cube5} 
-                alt="Deployment & Scaling" 
-                width={180} 
-                height={180} 
-              />
-            </div>
-            <h3 className={styles.stepTitle}>Deployment & Scaling</h3>
-            <p className={styles.stepDescription}>
-              Once ready, we launch your solution with security audits, performance optimization, and post-launch support to scale effectively
-            </p>
-          </div>
-        </div>
+        )}
       </div>
+      
       <div className={styles.pixelPatternContainer}>
         <Image 
           src={pixelPattern} 
           alt="Pixel Pattern" 
           className={styles.pixelPattern}
+          layout="responsive"
+        />
+        <Image 
+          src={dots} 
+          alt="Dot Pattern" 
+          className={styles.dots}
           layout="responsive"
         />
       </div>

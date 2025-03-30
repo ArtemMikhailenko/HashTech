@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './CaseStudiesSection.module.css';
 import Image from 'next/image';
 import pixelPattern from '../../../../public/images/pixel-pattern.png';
+import dots from '../../../../public/images/dot-pattern2.png'
+
 interface CaseTag {
   name: string;
   backgroundColor: string;
@@ -13,6 +15,7 @@ interface CaseStudy {
   cost: string;
   services: string[];
   sectors: CaseTag[];
+  hoverImageUrl:string;
 }
 
 const CaseStudiesSection: React.FC = () => {
@@ -27,7 +30,8 @@ const CaseStudiesSection: React.FC = () => {
         { name: 'Blockchain', backgroundColor: '#8595ad' },
         { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
         { name: 'Cryptocurrency', backgroundColor: '#ad85ac' }
-      ]
+      ],
+      hoverImageUrl: '/images/cases/minner.png'  // Добавляем URL для hover-фона
     },
     {
       title: 'Qappi',
@@ -38,7 +42,8 @@ const CaseStudiesSection: React.FC = () => {
         { name: 'Blockchain', backgroundColor: '#8595ad' },
         { name: 'Gamification', backgroundColor: '#85ad8a' },
         { name: 'Community Growth', backgroundColor: '#ad85ac' }
-      ]
+      ],
+      hoverImageUrl: '/images/cases/qappi.png'
     },
     {
       title: 'Not Pixel',
@@ -49,7 +54,8 @@ const CaseStudiesSection: React.FC = () => {
         { name: 'Blockchain', backgroundColor: '#8595ad' },
         { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
         { name: 'NFT', backgroundColor: '#ad85ac' }
-      ]
+      ],
+      hoverImageUrl: '/images/cases/not-pixel.png'
     },
     {
       title: 'Yeet',
@@ -60,16 +66,22 @@ const CaseStudiesSection: React.FC = () => {
         { name: 'Blockchain', backgroundColor: '#8595ad' },
         { name: 'DeFi', backgroundColor: '#85ad8a' },
         { name: 'NFT', backgroundColor: '#ad85ac' }
-      ]
+      ],
+      hoverImageUrl: '/images/cases/yeet.png'
     }
   ];
+  
 
   return (
     <section className={styles.caseStudiesSection}>
       <div className={styles.container}>
         <div className={styles.casesList}>
           {caseStudies.map((caseStudy, index) => (
-            <div key={index} className={styles.caseCard}>
+            <div
+            key={index}
+            className={styles.caseCard}
+            style={{ '--hover-image': `url(${caseStudy.hoverImageUrl})` } as React.CSSProperties}
+          >
               <div className={styles.caseCardInner}>
                 <div className={styles.folded}></div>
                 <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,10 +128,16 @@ const CaseStudiesSection: React.FC = () => {
         </div>
       </div>
       <div className={styles.pixelPatternContainer}>
-        <Image 
+      <Image 
           src={pixelPattern} 
           alt="Pixel Pattern" 
           className={styles.pixelPattern}
+          layout="responsive"
+        />
+        <Image 
+          src={dots} 
+          alt="dots" 
+          className={styles.dots}
           layout="responsive"
         />
       </div>

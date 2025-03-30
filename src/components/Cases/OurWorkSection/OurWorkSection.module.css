@@ -1,33 +1,129 @@
 /* Светлый фон, отступы, общая высота секции, чтобы выглядело просторнее */
 .ourWorkSection {
-    background-color: #f2efe6;
-    color: #000; 
-    height: 50vh;
-    padding-top: 120px;
-    
-  }
-  .container{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 40px;
-  }
-  .heading {
-    font-family: var(--font-inter), 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 55px;
-    line-height: 196%;
-    color: #242424;
-    margin: 0 0 1rem;
+  background-color: #f2efe6;
+  color: #000;
+  min-height: 50vh;
+  padding-top: 120px;
+  padding-bottom: 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.heading {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 55px;
+  line-height: 196%;
+  color: #242424;
+  margin: 0 0 1rem;
+}
+
+/* Подзаголовок, шрифт Roboto Mono */
+.subheading {
+  font-family: var(--font-roboto-mono), 'Roboto Mono', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 123%;
+  letter-spacing: -0.02em;
+  color: #232323;
+  margin: 0;
+  max-width: 780px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
   }
   
-  /* Подзаголовок, шрифт Roboto Mono */
-  .subheading {
-    font-family: var(--font-roboto-mono), 'Roboto Mono', sans-serif;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 123%;
-    letter-spacing: -0.02em;
-    color: #232323;
-    margin: 0;
-
+  .heading {
+    font-size: 48px;
+    line-height: 180%;
   }
+  
+  .subheading {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+  
+  .ourWorkSection {
+    padding-top: 100px;
+  }
+  
+  .heading {
+    font-size: 42px;
+    line-height: 160%;
+  }
+  
+  .subheading {
+    font-size: 18px;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 540px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 80px;
+  }
+  
+  .ourWorkSection {
+    
+    justify-content: center;
+    min-height: 60vh;
+  }
+  
+  .heading {
+    font-size: 28px;
+    line-height: 150%;
+  }
+  
+  .subheading {
+    font-size: 14px;
+    line-height: 140%;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .ourWorkSection {
+    padding-top: 70px;
+    padding-bottom: 40px;
+  }
+  
+  .heading {
+    font-size: 28px;
+    line-height: 140%;
+  }
+  
+  .subheading {
+    font-size: 15px;
+    line-height: 130%;
+  }
+}
+
+@media (max-width: 400px) {
+  .heading {
+    font-size: 24px;
+  }
+  
+  .subheading {
+    font-size: 14px;
+  }
+}

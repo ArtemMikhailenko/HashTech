@@ -1,5 +1,5 @@
 .jobSection {
-  background-color: #fdfcf7;
+  background-color: #f2efe6;
   font-family: "Roboto Mono", monospace;
   color: #222;
 }
@@ -7,7 +7,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
   padding-bottom: 120px;
 }
 
@@ -37,7 +37,6 @@
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  min-width: 120px;
   text-align: center;
 }
 
@@ -63,6 +62,7 @@
   border-radius: 20px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  height: 100%;
 }
 
 .jobCard:hover {
@@ -79,11 +79,13 @@
   display: flex;
   flex-direction: column;
 }
+
 .jobCardInner svg {
   position: absolute;
   top: 0;
   right: -2px;
 }
+
 .folded {
   position: absolute;
   top: 0;
@@ -169,10 +171,87 @@
   rotate: 180deg;
 }
 
+.dots {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+
+/* Swiper styles */
+.mobileSliderContainer {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.mySwiper {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 40px;
+}
+
+.swiperSlide {
+  padding: 0 1rem;
+  box-sizing: border-box;
+  height: auto;
+}
+
+.sliderNavigation {
+  width: 100%;
+  display: flex;
+  padding: 0 15px;
+  gap: 20px;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: -60;
+  left: 0;
+  z-index: 10;
+}
+
+.navButton {
+  width: 60px;
+  height: 60px;
+  background-color: #f2efe6;
+  border: 2px solid #252525;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  user-select: none;
+}
+
+.navButton:focus {
+  outline: none;
+}
+
+.navButton svg {
+  width: 25px;
+  height: 25px;
+  pointer-events: none; /* Prevent SVG from capturing clicks */
+}
+
+.navButton:hover {
+  background-color: #e2e0d8;
+}
+
+.navButton:active {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
 /* Responsive styles */
 @media (max-width: 992px) {
   .jobGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -182,11 +261,68 @@
   }
   
   .categoryFilters {
-    justify-content: center;
+    gap: 10px;
   }
   
   .categoryButton {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
+    padding: 8px 14px;
+    font-size: 16px;
+  }
+  
+  .jobTitle {
+    padding-top: 25px;
+    font-size: 18px;
+  }
+  
+  .jobDescription {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 171%;
+    letter-spacing: -0.02em;
+  }
+  
+  .findOutButton {
+    font-size: 14px;
+  }
+  
+  /* Hide grid on mobile */
+  .jobGrid {
+    display: none;
+  }
+  
+  .navButton {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .navButton svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.6rem;
+    line-height: 1.8;
+  }
+  
+  
+  .container {
+    padding: 0 1rem;
+    padding-bottom: 80px;
+  }
+  .categoryButton {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  .navButton {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .navButton svg {
+    width: 16px;
+    height: 16px;
   }
 }

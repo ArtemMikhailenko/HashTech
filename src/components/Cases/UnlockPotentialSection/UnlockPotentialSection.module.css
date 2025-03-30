@@ -1,5 +1,5 @@
 .unlockSection {
-    background-color: #262626;
+    background-color: #242424;
     color: white;
     background-image: url('/images/dot-pattern2.png');
     padding: 4rem 0;
@@ -66,15 +66,17 @@
   /* Responsive styles */
   @media (max-width: 768px) {
     .title {
-      font-size: 3rem;
+      font-size: 22px;
     }
     
     .description {
-      font-size: 1rem;
+      font-size: 9px;
     }
     
     .consultationButton {
       width: 100%;
       min-width: unset;
+      font-size: 12px;
+      padding: 8px 10px;
     }
   }
