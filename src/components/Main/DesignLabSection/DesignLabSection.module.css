@@ -1,27 +1,28 @@
 .designLabSection {
   position: relative;
   background-color: #eeebe2;
-  padding: 3rem 0;
   overflow: hidden;
-  min-height: 100vh;
   font-family: "Roboto Mono", monospace;
+  padding-bottom: 0; /* Убираем отступ внизу */
 }
-  
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 3rem 2rem;
   position: relative;
 }
-  
+
 .sectionTitle {
   font-size: 2rem;
   font-weight: 700;
-  margin: 2rem 0 3rem;
   color: #222;
   font-family: "Roboto Mono", monospace;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 10; /* Высокий z-index для заголовка */
 }
-  
+
 .stackCard {
   display: flex;
   width: 100%;
@@ -29,33 +30,28 @@
   border-radius: 10px;
   position: relative;
   background-color: #eeebe2;
-  padding: 20px 30px;
-  clip-path: polygon(
-    0% 0%,
-    calc(100% - 58px) 0%,
-    100% 56px,
-    100% 100%,
-    0% 100%
-  );
+  margin-bottom: 20px; /* Увеличили отступ между карточкой и анимацией */
+  z-index: 10; 
+  clip-path: polygon(     0% 0%,     calc(100% - 58px) 0%,     100% 56px,     100% 100%,     0% 100%   ); 
 }
-  
+
 .stackInfo {
   flex: 1;
   padding: 1.5rem;
   color: #252525;
 }
-  
+
 .stackHeader {
   position: relative;
 }
-  
+
 .stackHeader h3 {
   font-weight: 700;
   font-size: 28px;
   color: #252525;
   padding-bottom: 10px;
 }
-  
+
 .stackCard svg {
   position: absolute;
   top: -5px;
@@ -63,9 +59,13 @@
   z-index: 3;
 }
 
-.stackText{
+.stackText {
   display: flex;
   justify-content: space-between;
+}
+
+.stackDetails {
+  flex: 0 0 45%;
 }
 
 .stackDetails p {
@@ -76,14 +76,14 @@
   color: #262626;
   margin: 5px 0;
 }
-  
+
 .stackDetails p span {
   font-weight: 700;
   display: inline-block;
   color: #6c6c6c;
   padding-left: 10px;
 }
-  
+
 .stackDescription {
   flex: 1;
   display: flex;
@@ -91,7 +91,7 @@
   color: #252525;
   max-width: 470px;
 }
-  
+
 .stackDescription p {
   font-weight: 700;
   font-size: 16px;
@@ -99,45 +99,110 @@
   letter-spacing: -0.02em;
   color: #262626;
 }
-  
+
 .designContainer {
   position: relative;
-  height: 400px;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
+  height: 500px;
+  margin-top: 0;
+  margin-bottom: 0; /* Уменьшаем нижний отступ, чтобы избежать лишнего пространства */
   perspective: 1000px;
+  overflow: visible;
 }
-  
+
+/* Logo styling */
+.logoContainer {
+  position: absolute;
+  text-align: center;
+  pointer-events: none;
+  width: 300px;
+}
+
+.logoText {
+  font-size: 60px;
+  font-weight: 600;
+  color: #333;
+  font-family: sans-serif;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.logoGlow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  filter: blur(25px);
+  z-index: 1;
+  transform: scale(2);
+}
+
+/* Button styling */
+.buttonContainer {
+  position: absolute;
+  text-align: center;
+  pointer-events: none;
+  width: 250px;
+}
+
+.createButton {
+  padding: 16px 30px;
+  background-color: #aa98b6;
+  border: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 0;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+  pointer-events: auto;
+}
+
 .designItem {
   position: absolute;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  will-change: transform, left, top, opacity;
+  align-items: center;
+  pointer-events: none;
+  z-index: 2; /* Default z-index for design items */
 }
-  
+
+.designItemRight {
+  flex-direction: row;
+}
+
+/* Z-index classes that can be applied to design items */
+.zIndex1 { z-index: 1; }
+.zIndex2 { z-index: 2; }
+.zIndex3 { z-index: 3; }
+.zIndex4 { z-index: 4; }
+.zIndex5 { z-index: 5; }
+
 .designItem p {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  line-height: 1.3;
-  color: #333;
-  opacity: 0.8;
-  transition: opacity 0.5s ease;
-}
-  
-.designItem:hover p {
-  opacity: 1;
-}
-  
-.cursor {
   position: absolute;
-  right: 480px;
-  top: 150px;
-  z-index: 10;
-  animation: float 2s ease-in-out infinite;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: monospace;
+  line-height: 1.4;
+  color: #777;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
 }
-  
+
+/* Text position styles */
+.textRight {
+  left: 110%; /* Position text to the right of the image */
+  top: 50%;
+  transform: translateY(-50%);
+}
+.textLeft {
+  right: 110%; /* Position text to the right of the image */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -147,10 +212,10 @@
   }
 }
 
-/* Responsive adjustments for design container */
+/* Responsive adjustments */
 @media (max-width: 1200px) {
   .designContainer {
-    height: 380px;
+    height: 350px;
   }
 }
 
@@ -165,7 +230,7 @@
   }
   
   .designContainer {
-    height: 350px;
+    height: 320px;
   }
   
   .sectionTitle {
@@ -197,6 +262,21 @@
     font-size: 1.6rem;
     text-align: center;
   }
+  
+  /* For smaller screens, adjust the absolute positioning */
+  .designItem p {
+    position: relative;
+    margin-top: 10px;
+    text-align: center;
+    left: 0;
+    transform: none;
+  }
+  
+  .designItem {
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 576px) {
@@ -206,7 +286,7 @@
   
   .designItem img {
     transform: scale(0.9);
-    transform-origin: left top;
+    transform-origin: center;
   }
   
   .designItem p {
@@ -214,7 +294,6 @@
   }
 }
 
-/* Special case for extremely small screens */
 @media (max-width: 400px) {
   .container {
     padding: 0 1rem;
@@ -228,7 +307,7 @@
     font-size: 22px;
   }
   
-  .stackDetails p, 
+  .stackDetails p,
   .stackDescription p {
     font-size: 14px;
   }

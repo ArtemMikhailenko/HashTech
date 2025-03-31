@@ -1,203 +1,121 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './DesignLabSection.module.css';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import StackCard from './StackCard';
 
 import design1 from '../../../../public/images/design1.png'; // Product & UI/UX Design
 import design2 from '../../../../public/images/design2.png'; // Illustration & Motion Design
-import design3 from '../../../../public/images/design3.png'; // Creative Content & Gamification
-import design4 from '../../../../public/images/design4.png'; // Branding & Visual Identity
+import design3 from '../../../../public/images/design3.png'; // Branding & Visual Identity
+import design4 from '../../../../public/images/design4.png'; // Creative Content & Gamification
 
 const DesignLabSection: React.FC = () => {
-  const designContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  const designContainerRef = useRef<HTMLDivElement>(null);
+  const design1Ref = useRef<HTMLDivElement>(null);
+  const design2Ref = useRef<HTMLDivElement>(null);
+  const design3Ref = useRef<HTMLDivElement>(null);
+  const design4Ref = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
   
-  // Calculate positions based on screen width
-  const getResponsivePositions = (width: number) => {
-    // Desktop positions (default)
-    let scattered = {
-      design1: { right: '400px', top: '20px', opacity: 1, transform: 'translateX(0)' },
-      design2: { left: '172px', top: '120px', opacity: 1, transform: 'translateX(0)' },
-      design3: { left: '320px', top: '250px', opacity: 1, transform: 'translateX(0)' },
-      design4: { right: '200px', top: '170px', opacity: 1, transform: 'translateX(0)' },
-    };
-    
-    let stacked = {
-      design1: { left: '500px', top: '0px', opacity: 1, transform: 'translateX(-50%)' },
-      design2: { left: '570px', top: '120px', opacity: 1, transform: 'translateX(-50%)' },
-      design3: { left: '500px', top: '180px', opacity: 1, transform: 'translateX(-50%)' },
-      design4: { left: '400px', top: '240px', opacity: 1, transform: 'translateX(-50%)' },
-    };
-    
-    // Tablet adjustments
-    if (width < 1024 && width >= 768) {
-      const centerX = width / 2;
-      stacked = {
-        design1: { left: `${centerX}px`, top: '0px', opacity: 1, transform: 'translateX(-50%)' },
-        design2: { left: `${centerX + 40}px`, top: '120px', opacity: 1, transform: 'translateX(-50%)' },
-        design3: { left: `${centerX}px`, top: '180px', opacity: 1, transform: 'translateX(-50%)' },
-        design4: { left: `${centerX - 60}px`, top: '240px', opacity: 1, transform: 'translateX(-50%)' },
-      };
-      
-      scattered = {
-        design1: { right: '300px', top: '20px', opacity: 1, transform: 'translateX(0)' },
-        design2: { left: '120px', top: '120px', opacity: 1, transform: 'translateX(0)' },
-        design3: { left: '250px', top: '250px', opacity: 1, transform: 'translateX(0)' },
-        design4: { right: '150px', top: '170px', opacity: 1, transform: 'translateX(0)' },
-      };
-    }
-    
-    // Mobile adjustments
-    if (width < 768) {
-      const centerX = width / 2;
-      stacked = {
-        design1: { left: `${centerX}px`, top: '0px', opacity: 1, transform: 'translateX(-50%)' },
-        design2: { left: `${centerX + 20}px`, top: '100px', opacity: 1, transform: 'translateX(-50%)' },
-        design3: { left: `${centerX}px`, top: '160px', opacity: 1, transform: 'translateX(-50%)' },
-        design4: { left: `${centerX - 30}px`, top: '220px', opacity: 1, transform: 'translateX(-50%)' },
-      };
-      
-      scattered = {
-        //@ts-ignore
-        design1: { left: '60%', top: '20px', opacity: 1, transform: 'translateX(-50%)' },
-        design2: { left: '30%', top: '120px', opacity: 1, transform: 'translateX(-50%)' },
-        design3: { left: '50%', top: '250px', opacity: 1, transform: 'translateX(-50%)' },
-        //@ts-ignore
-        design4: { left: '70%', top: '170px', opacity: 1, transform: 'translateX(-50%)' },
-      };
-    }
-    
-    return { scattered, stacked };
-  };
-  
-  const { scattered, stacked } = getResponsivePositions(windowWidth);
-  
-  // Initial scattered positions
-  const [designPositions, setDesignPositions] = useState(scattered);
-
+  // Make sure stack card is separate from animation logic
   useEffect(() => {
-    // Handle window resize for responsive positioning
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      const { scattered, stacked } = getResponsivePositions(window.innerWidth);
-      
-      // If we're already in animation, calculate appropriate intermediate positions
-      if (sectionRef.current) {
-        const sectionRect = sectionRef.current.getBoundingClientRect();
-        const scrollProgress = 1 - (sectionRect.top / window.innerHeight);
-        const animationProgress = Math.max(0, Math.min(1, (scrollProgress - 0.6) / 0.6));
-        
-        if (animationProgress > 0) {
-          // We're in the midst of animation, interpolate between new positions
-          const interpolated = {
-            design1: interpolatePosition(scattered.design1, stacked.design1, animationProgress),
-            design2: interpolatePosition(scattered.design2, stacked.design2, animationProgress),
-            design3: interpolatePosition(scattered.design3, stacked.design3, animationProgress),
-            design4: interpolatePosition(scattered.design4, stacked.design4, animationProgress),
-          };
-          setDesignPositions(interpolated);
-        } else {
-          // We're not in animation yet, use scattered positions
-          setDesignPositions(scattered);
-        }
-      }
-    };
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
     
-    const handleScroll = () => {
-      if (!designContainerRef.current || !sectionRef.current) return;
+    // Make sure all refs are available
+    if (!sectionRef.current ||
+        !design1Ref.current || 
+        !design2Ref.current || 
+        !design3Ref.current || 
+        !design4Ref.current || 
+        !logoRef.current || 
+        !buttonRef.current) {
+      return;
+    }
 
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = sectionRect.top;
-      const windowHeight = window.innerHeight;
-      
-      // Calculate how far we've scrolled through the section
-      // 0 = just entered view, 1 = completely scrolled past
-      const scrollProgress = 1 - (sectionTop / windowHeight);
-      
-      // Start animation after 60% scroll, complete by full scroll
-      const animationProgress = Math.max(0, Math.min(1, (scrollProgress - 0.6) / 0.6));
-      
-      // Only update if we're in the relevant scroll zone
-      if (scrollProgress > 0 && scrollProgress < 1.2) {
-        // Get current responsive positions based on screen width
-        const { scattered, stacked } = getResponsivePositions(windowWidth);
-        
-        // Interpolate positions based on scroll
-        const newPositions = {
-          design1: interpolatePosition(scattered.design1, stacked.design1, animationProgress),
-          design2: interpolatePosition(scattered.design2, stacked.design2, animationProgress),
-          design3: interpolatePosition(scattered.design3, stacked.design3, animationProgress),
-          design4: interpolatePosition(scattered.design4, stacked.design4, animationProgress),
-        };
-        
-        setDesignPositions(prevPositions => {
-          // Only update if there's a significant change
-          const hasChanged = Object.keys(newPositions).some(key => {
-            //@ts-ignore
-            const newPos = newPositions[key];
-            //@ts-ignore
-            const prevPos = prevPositions[key];
-            return Math.abs(parseFloat(String(newPos.top)) - parseFloat(String(prevPos.top))) > 0.5;
-          });
-          
-          return hasChanged ? newPositions : prevPositions;
-        });
-      }
-    };
+    // Set initial positions (scattered)
+    gsap.set(design1Ref.current, { left: '75%', top: '50px', opacity: 1 });
+    gsap.set(design2Ref.current, { left: '25%', top: '80px', opacity: 1 });
+    gsap.set(design3Ref.current, { left: '30%', top: '300px', opacity: 1 });
+    gsap.set(design4Ref.current, { left: '70%', top: '250px', opacity: 1 });
+    gsap.set(logoRef.current, { left: '50%', top: '180px', xPercent: -50, opacity: 0, scale: 0.8 });
+    gsap.set(buttonRef.current, { left: '50%', top: '260px', xPercent: -50, opacity: 0 });
 
-    // Helper function to interpolate positions
-    const interpolatePosition = (start: any, end: any, progress: number) => {
-      const result: any = { ...start };
-      
-      // Handle opacity 
-      result.opacity = start.opacity + (end.opacity - start.opacity) * progress;
-      
-      // Handle transform
-      if (end.transform) {
-        result.transform = end.transform;
+    // Create the animation timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top", // Начинаем, когда верх секции достигает верха окна
+        end: "+=600", // Анимация продолжается 600px скролла
+        scrub: 4,
+        pin: true, // Фиксируем всю секцию
+        pinSpacing: true, // Оставляем пространство для скролла внутри секции
+        anticipatePin: 1,
+        markers: false,
       }
-      
-      // Handle left/right positioning
-      if (typeof start.left === 'string' && typeof end.left === 'string') {
-        const startVal = parseInt(start.left, 10);
-        const endVal = parseInt(end.left, 10);
-        const interpolated = startVal + (endVal - startVal) * progress;
-        result.left = `${interpolated}px`;
-      }
-      
-      if (typeof start.right === 'string' && end.left) {
-        // If transitioning from right to left position
-        if (progress > 0.5) {
-          delete result.right;
-          const endVal = parseInt(end.left, 10);
-          result.left = `${endVal}px`;
-        }
-      }
-      
-      // Handle top positioning
-      if (typeof start.top === 'string' && typeof end.top === 'string') {
-        const startVal = parseInt(start.top, 10);
-        const endVal = parseInt(end.top, 10);
-        const interpolated = startVal + (endVal - startVal) * progress;
-        result.top = `${interpolated}px`;
-      }
-      
-      return result;
-    };
+    });
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
+    // Add animations to timeline - slower for a more dramatic effect
+    tl.to([design1Ref.current, design2Ref.current], {
+      left: '50%', 
+      xPercent: -50,
+      opacity: 1,
+      ease: "power3.inOut",
+      stagger: 0.08,
+      duration: 4.5
+    }, 0);
     
-    // Initial calls
-    handleScroll();
-    handleResize();
+    // Handle design3 and design4 separately to allow custom positions
+    tl.to(design3Ref.current, {
+      left: '50%', // Moved to the right instead of center
+      xPercent: -50,
+      opacity: 1,
+      ease: "power3.inOut",
+      stagger: 0.08,
+      duration: 4.5
+    }, 0);
     
+    tl.to(design4Ref.current, {
+      left: '50%', // Moved to the right instead of center
+      xPercent: -50,
+      opacity: 1,
+      ease: "power3.inOut",
+      stagger: 0.08,
+      duration: 4.5
+    }, 0);
+
+    // Specific positions for each element
+    tl.to(design1Ref.current, { top: '0', ease: "power2.inOut" }, 0);
+    tl.to(design2Ref.current, { top: '80px', ease: "power2.inOut" }, 0);
+    tl.to(design3Ref.current, { top: '220px', left: '50%', ease: "power2.inOut" }, 0); // Moved slightly to the right
+    tl.to(design4Ref.current, { top: '270px', left: '50%', ease: "power2.inOut" }, 0); // Moved slightly to the right
+    
+    // Fade in the logo and button - slightly delayed
+    tl.to(logoRef.current, { 
+      opacity: 1, 
+      scale: 1.1,
+      ease: "power1.inOut", // Gentler easing
+      duration: 3 // Increased for slower animation
+    }, 1); // Delayed more
+    
+    tl.to(buttonRef.current, { 
+      opacity: 1, 
+      ease: "power1.inOut", // Gentler easing
+      duration: 3 // Increased for slower animation
+    }, 1.5); // Delayed more
+
+    // Cleanup
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
+      if (ScrollTrigger.getAll().length > 0) {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      }
+      tl.kill();
     };
-  }, [windowWidth]);
+  }, []);
 
   return (
     <section className={styles.designLabSection} ref={sectionRef}>
@@ -230,71 +148,52 @@ const DesignLabSection: React.FC = () => {
         
         <div className={styles.designContainer} ref={designContainerRef}>
           <div 
-            className={styles.designItem} 
-            style={{ 
-              left: designPositions.design2.left,
-              //@ts-ignore 
-              right: designPositions.design2.right,
-              top: designPositions.design2.top,
-              opacity: designPositions.design2.opacity,
-              transform: designPositions.design2.transform,
-              transition: 'all 0.5s ease-out',
-              zIndex: 2
-            }}
+            className={`${styles.designItem} ${styles.designItemRight} ${styles.zIndex4}`}
+            ref={design1Ref}
           >
-            <Image src={design2} alt="Illustration & Motion Design" width={150} height={110} />
-            <p>Illustration &<br />Motion Design</p>
+            <Image src={design1} alt="Product & UI/UX Design" width={99} height={185} />
+            <p className={styles.textRight}>Product & UI/UX<br />Design</p>
           </div>
           
           <div 
-            className={styles.designItem} 
-            style={{ 
-              //@ts-ignore
-              left: designPositions.design1.left, 
-              right: designPositions.design1.right,
-              top: designPositions.design1.top,
-              opacity: designPositions.design1.opacity,
-              transform: designPositions.design1.transform,
-              transition: 'all 0.5s ease-out',
-              zIndex: 3
-            }}
+            className={`${styles.designItem} ${styles.designItemRight} ${styles.zIndex3}`}
+            ref={design2Ref}
           >
-            <Image src={design1} alt="Product & UI/UX Design" width={110} height={150} />
-            <p>Product & UI/UX<br />Design</p>
+            <Image src={design2} alt="Illustration & Motion Design" width={99} height={185} />
+            <p className={styles.textLeft}>Illustration &<br />Motion Design</p>
           </div>
           
           <div 
-            className={styles.designItem} 
-            style={{ 
-              //@ts-ignore
-              left: designPositions.design4.left, 
-              right: designPositions.design4.right,
-              top: designPositions.design4.top,
-              opacity: designPositions.design4.opacity,
-              transform: designPositions.design4.transform,
-              transition: 'all 0.5s ease-out',
-              zIndex: 1
-            }}
+            className={`${styles.designItem} ${styles.designItemRight} ${styles.zIndex3}`}
+            ref={design3Ref}
           >
-            <Image src={design4} alt="Branding & Visual Identity" width={150} height={70} />
-            <p>Branding & Visual<br />Identity</p>
+            <Image src={design3} alt="Branding & Visual Identity" width={100} height={92} />
+            <p className={styles.textLeft}>Branding & Visual<br />Identity</p>
           </div>
           
           <div 
-            className={styles.designItem} 
-            style={{ 
-              left: designPositions.design3.left, 
-              //@ts-ignore
-              right: designPositions.design3.right,
-              top: designPositions.design3.top,
-              opacity: designPositions.design3.opacity,
-              transform: designPositions.design3.transform,
-              transition: 'all 0.5s ease-out',
-              zIndex: 2
-            }}
+            className={`${styles.designItem} ${styles.designItemRight} ${styles.zIndex5}`}
+            ref={design4Ref}
           >
-            <Image src={design3} alt="Creative Content & Gamification" width={150} height={110} />
-            <p>Creative Content<br />& Gamification</p>
+            <Image src={design4} alt="Creative Content & Gamification" width={170} height={178} />
+            <p className={styles.textLeft}>Creative Content<br />& Gamification</p>
+          </div>
+          
+          {/* Logo in the center - initially hidden, appears on scroll */}
+          <div 
+            className={`${styles.logoContainer} ${styles.zIndex5}`}
+            ref={logoRef}
+          >
+            <h2 className={styles.logoText}>hashtech</h2>
+            <div className={styles.logoGlow}></div>
+          </div>
+          
+          {/* Button - initially hidden, appears on scroll */}
+          <div 
+            className={`${styles.buttonContainer} ${styles.zIndex5}`}
+            ref={buttonRef}
+          >
+            <button className={styles.createButton}>Let's create together</button>
           </div>
         </div>
       </div>
