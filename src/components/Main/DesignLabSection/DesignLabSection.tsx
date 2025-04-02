@@ -4,7 +4,6 @@ import Image from 'next/image';
 import styles from './DesignLabSection.module.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import StackCard from './StackCard';
 
 import design1 from '../../../../public/images/design1.png'; // Product & UI/UX Design
 import design2 from '../../../../public/images/design2.png'; // Illustration & Motion Design
@@ -21,7 +20,6 @@ const DesignLabSection: React.FC = () => {
   const logoRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
   
-  // Make sure stack card is separate from animation logic
   useEffect(() => {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
@@ -49,64 +47,68 @@ const DesignLabSection: React.FC = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top top", // Начинаем, когда верх секции достигает верха окна
-        end: "+=600", // Анимация продолжается 600px скролла
-        scrub: 4,
-        pin: true, // Фиксируем всю секцию
-        pinSpacing: true, // Оставляем пространство для скролла внутри секции
+        start: "top -100", // Start when the top of the section is 100px above viewport top
+        end: "+=600", // Animation continues for 600px of scrolling
+        scrub: 2, // Smooth scrubbing effect, value reduced for more responsive animation
+        pin: true, // Pin the section
+        pinSpacing: true, // Maintain spacing
         anticipatePin: 1,
-        markers: false,
+        markers: false, // Set to true for debugging
       }
     });
 
-    // Add animations to timeline - slower for a more dramatic effect
-    tl.to([design1Ref.current, design2Ref.current], {
-      left: '50%', 
+    // Important: Define the complete target position in a single animation for each element
+    // This prevents the "jumping" behavior when multiple animations target the same properties
+    
+    // Design element 1
+    tl.to(design1Ref.current, {
+      left: '50%',
+      top: '0',
       xPercent: -50,
-      opacity: 1,
-      ease: "power3.inOut",
-      stagger: 0.08,
-      duration: 4.5
+      ease: "power2.inOut",
+      duration: 2
     }, 0);
     
-    // Handle design3 and design4 separately to allow custom positions
+    // Design element 2
+    tl.to(design2Ref.current, {
+      left: '50%',
+      top: '80px',
+      xPercent: -50,
+      ease: "power2.inOut",
+      duration: 2
+    }, 0.1); // Slight stagger
+    
+    // Design element 3 - Fix the jumping issue by having a single animation with final values
     tl.to(design3Ref.current, {
-      left: '50%', // Moved to the right instead of center
+      left: '50%',
+      top: '220px',
       xPercent: -50,
-      opacity: 1,
-      ease: "power3.inOut",
-      stagger: 0.08,
-      duration: 4.5
-    }, 0);
+      ease: "power2.inOut",
+      duration: 2
+    }, 0.2); // Slight stagger
     
+    // Design element 4 - Fix the jumping issue by having a single animation with final values
     tl.to(design4Ref.current, {
-      left: '50%', // Moved to the right instead of center
+      left: '50%',
+      top: '270px',
       xPercent: -50,
-      opacity: 1,
-      ease: "power3.inOut",
-      stagger: 0.08,
-      duration: 4.5
-    }, 0);
-
-    // Specific positions for each element
-    tl.to(design1Ref.current, { top: '0', ease: "power2.inOut" }, 0);
-    tl.to(design2Ref.current, { top: '80px', ease: "power2.inOut" }, 0);
-    tl.to(design3Ref.current, { top: '220px', left: '50%', ease: "power2.inOut" }, 0); // Moved slightly to the right
-    tl.to(design4Ref.current, { top: '270px', left: '50%', ease: "power2.inOut" }, 0); // Moved slightly to the right
+      ease: "power2.inOut",
+      duration: 2
+    }, 0.3); // Slight stagger
     
     // Fade in the logo and button - slightly delayed
     tl.to(logoRef.current, { 
       opacity: 1, 
       scale: 1.1,
-      ease: "power1.inOut", // Gentler easing
-      duration: 3 // Increased for slower animation
-    }, 1); // Delayed more
+      ease: "power1.inOut",
+      duration: 2
+    }, 1.5); // Delayed more
     
     tl.to(buttonRef.current, { 
       opacity: 1, 
-      ease: "power1.inOut", // Gentler easing
-      duration: 3 // Increased for slower animation
-    }, 1.5); // Delayed more
+      ease: "power1.inOut",
+      duration: 2
+    }, 2); // Delayed more
 
     // Cleanup
     return () => {

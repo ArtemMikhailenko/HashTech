@@ -3,7 +3,7 @@
   background-color: #eeebe2;
   overflow: hidden;
   font-family: "Roboto Mono", monospace;
-  padding-bottom: 0; /* Убираем отступ внизу */
+  padding-bottom: 0;
 }
 
 .container {
@@ -20,7 +20,7 @@
   font-family: "Roboto Mono", monospace;
   margin-bottom: 3rem;
   position: relative;
-  z-index: 10; /* Высокий z-index для заголовка */
+  z-index: 10;
 }
 
 .stackCard {
@@ -30,9 +30,15 @@
   border-radius: 10px;
   position: relative;
   background-color: #eeebe2;
-  margin-bottom: 20px; /* Увеличили отступ между карточкой и анимацией */
-  z-index: 10; 
-  clip-path: polygon(     0% 0%,     calc(100% - 58px) 0%,     100% 56px,     100% 100%,     0% 100%   ); 
+  margin-bottom: 20px;
+  z-index: 10;
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - 58px) 0%,
+    100% 56px,
+    100% 100%,
+    0% 100%
+  );
 }
 
 .stackInfo {
@@ -104,7 +110,7 @@
   position: relative;
   height: 500px;
   margin-top: 0;
-  margin-bottom: 0; /* Уменьшаем нижний отступ, чтобы избежать лишнего пространства */
+  margin-bottom: 0;
   perspective: 1000px;
   overflow: visible;
 }
@@ -166,7 +172,9 @@
   display: flex;
   align-items: center;
   pointer-events: none;
-  z-index: 2; /* Default z-index for design items */
+  z-index: 2;
+  transform-origin: center;
+  will-change: transform, opacity, left, top;
 }
 
 .designItemRight {
@@ -193,15 +201,17 @@
 
 /* Text position styles */
 .textRight {
-  left: 110%; /* Position text to the right of the image */
+  left: 110%;
   top: 50%;
   transform: translateY(-50%);
 }
+
 .textLeft {
-  right: 110%; /* Position text to the right of the image */
+  right: 110%;
   top: 50%;
   transform: translateY(-50%);
 }
+
 .pixelPatternContainer {
   width: 100%;
   overflow: hidden;
@@ -214,12 +224,14 @@
   height: auto;
   object-fit: cover;
 }
-.dots{
+
+.dots {
   position: absolute;
   z-index: 10;
   top: 0;
   left: 0;
 }
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
