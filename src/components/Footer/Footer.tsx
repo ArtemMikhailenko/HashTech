@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
           <div className={styles.logoSection}>
             <div className={styles.logo}>
               <img src="/images/logo.svg" alt="" />
-              <span className={styles.pronunciation}>[hæʃˈtɛk]</span>
+              
             </div>
             <p className={styles.copyright}>
               Copyrights are reserved. All works are protected by<br />
