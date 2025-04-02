@@ -69,7 +69,6 @@ const Header: React.FC = () => {
     <header className={`${styles.header} ${hasLightBackground ? styles.lightHeader : styles.darkHeader}`}>
       <div className={styles.logo}>
         <img src={hasLightBackground ? "/images/logo-dark.svg" : "/images/logo.svg"} alt="HashTech" />
-        <span className={styles.pronunciation}>[haʃˈtɛk]</span>
       </div>
       
       {/* Desktop Navigation */}
