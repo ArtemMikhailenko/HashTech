@@ -34,7 +34,7 @@
   color: #696969;
   font-family: "Roboto Mono", monospace;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 26px;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: center;
@@ -47,7 +47,8 @@
 }
 
 .categoryButton:hover:not(.active) {
-  background-color: rgba(34, 34, 34, 0.1);
+  border: none;
+  box-shadow: 5px 5px 0 0 #252525;
 }
 
 .jobGrid {
@@ -74,8 +75,8 @@
   background-color: #f2f0e8;
   border-radius: 20px;
   padding: 2rem;
+  border: 2px solid black;
   height: 100%;
-  margin: -5px 5px 5px -5px;
   display: flex;
   flex-direction: column;
 }

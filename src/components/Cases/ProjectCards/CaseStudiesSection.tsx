@@ -92,7 +92,7 @@ const CaseStudiesSection: React.FC = () => {
                 
                 <div className={styles.caseDetails}>
                   <div className={styles.detailColumn}>
-                    <h4 className={styles.detailTitle}>Cost</h4>
+                    <h4 className={styles.detailCost}>Cost</h4>
                     <div className={styles.tagGroup}>
                       <span className={styles.costTag}>{caseStudy.cost}</span>
                     </div>
