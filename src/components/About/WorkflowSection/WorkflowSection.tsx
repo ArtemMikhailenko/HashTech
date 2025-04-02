@@ -11,6 +11,7 @@ import cube4 from '../../../../public/images/workflow/cube4.png';
 import cube5 from '../../../../public/images/workflow/cube5.png';
 import pixelPattern from '../../../../public/images/pixel-pattern.png';
 import dots from '../../../../public/images/dot-pattern2.png';
+import arrow from '../../../../public/images/workflow/arrow-right.png'; // Add this arrow image
 
 // Import Swiper components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -82,26 +83,36 @@ const WorkflowSection: React.FC = () => {
       image: cube1,
       title: "Discovery & Consultation",
       description: "We start by understanding your vision, business goals, and technical requirements to ensure the best approach",
+      hasTopArrow: false,
+      hasBottomArrow: true,
     },
     {
       image: cube2,
       title: "Team Assembly",
       description: "We handpick top-tier Web3 specialists tailored to your project's needs, ensuring efficiency and expertise",
+      hasTopArrow: true,
+      hasBottomArrow: false,
     },
     {
       image: cube3,
       title: "Planning & Estimation",
       description: "We define the development roadmap, estimate timelines and costs, and align expectations to keep the process transparent",
+      hasTopArrow: false,
+      hasBottomArrow: true,
     },
     {
       image: cube4,
       title: "Agile Development",
       description: "Our team builds, tests, and iterates in short cycles, ensuring flexibility and seamless progress toward the final product",
+      hasTopArrow: true,
+      hasBottomArrow: false, 
     },
     {
       image: cube5,
       title: "Deployment & Scaling",
       description: "Once ready, we launch your solution with security audits, performance optimization, and post-launch support to scale effectively",
+      hasTopArrow: false,
+      hasBottomArrow: false,
     }
   ];
   
@@ -128,6 +139,29 @@ const WorkflowSection: React.FC = () => {
                 </div>
                 <h3 className={styles.stepTitle}>{step.title}</h3>
                 <p className={styles.stepDescription}>{step.description}</p>
+                
+                {/* Add arrows */}
+                {step.hasBottomArrow && (
+                  <div className={`${styles.arrow} ${styles.bottomArrow}`}>
+                    <Image 
+                      src={arrow}
+                      alt="Next step"
+                      width={150}
+                      height={50}
+                    />
+                  </div>
+                )}
+                
+                {step.hasTopArrow && (
+                  <div className={`${styles.arrow} ${styles.topArrow}`}>
+                    <Image 
+                      src={arrow}
+                      alt="Next step"
+                      width={130}
+                      height={50}
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -158,6 +192,18 @@ const WorkflowSection: React.FC = () => {
                     </div>
                     <h3 className={styles.stepTitle}>{step.title}</h3>
                     <p className={styles.stepDescription}>{step.description}</p>
+                    
+                    {/* Show vertical arrow for all slides except the last one */}
+                    {index < workflowSteps.length - 1 && (
+                      <div className={styles.mobileArrow}>
+                        <Image 
+                          src={arrow}
+                          alt="Next step"
+                          width={100}
+                          height={40}
+                        />
+                      </div>
+                    )}
                   </div>
                 </SwiperSlide>
               ))}

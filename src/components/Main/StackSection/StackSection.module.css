@@ -202,7 +202,24 @@
   top: 50%;
   transform: translateY(-50%);
 }
+.pixelPatternContainer {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  position: relative;
+}
 
+.pixelPattern {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.dots{
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
 @keyframes float {
   0%, 100% {
     transform: translateY(0);

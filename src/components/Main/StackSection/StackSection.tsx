@@ -176,7 +176,8 @@ import Image from 'next/image';
 import styles from './StackSection.module.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import pixelPattern from '../../../../public/images/pixel-pattern.png';
+import dots from '../../../../public/images/dot-pattern2.png'
 
 import lego1 from '../../../../public/images/lego1.svg';
 import lego2 from '../../../../public/images/lego2.svg';
@@ -296,6 +297,20 @@ const StackSection: React.FC = () => {
 
   return (
     <section className={styles.designLabSection} ref={sectionRef}>
+      <div className={styles.pixelPatternContainer}>
+        <Image 
+          src={pixelPattern} 
+          alt="Pixel Pattern" 
+          className={styles.pixelPattern}
+          layout="responsive"
+        />
+        <Image 
+          src={dots} 
+          alt="dots" 
+          className={styles.dots}
+          layout="responsive"
+        />
+      </div>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>/ Design Lab /</h2>
         
