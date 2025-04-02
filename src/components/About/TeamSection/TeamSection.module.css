@@ -18,8 +18,9 @@
   line-height: 225%;
   color: #eeebe2;
   padding-bottom: 10px;
-  font-family: "Roboto Flex", sans-serif;;
+  font-family: "Roboto Flex", sans-serif;
 }
+
 .sectionTitle span {
   padding-left: 5px;
 }
@@ -51,29 +52,37 @@
   height: 100%;
   margin: -10px 10px 10px -10px;
   box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Add this to keep content contained */
 }
 
+/* Fixed dogEar positioning */
 .dogEar {
   position: absolute;
-  top: -1;
-  right: -1;
+  top: 0;
+  right: 0;
   width: 60px;
   height: 60px;
-  border-radius: 10px;
+  border-radius: 8px 0 0 0;
   background-color: #202020;
   clip-path: polygon(0 0, 100% 0, 100% 100%);
+  z-index: 2; /* Ensure proper stacking */
 }
-.cardContent svg{
+
+/* Fixed SVG positioning */
+.cardContent svg {
   position: absolute;
-  top: -6;
-  right:-5;
+  top: -3;
+  right: -3;
   z-index: 3;
-  rotate: -2deg;
+  transform: rotate(-1deg);
 }
+
 .memberInfo {
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative; /* Ensure proper stacking */
+  z-index: 3; /* Place above the dogEar and SVG */
 }
 
 .memberName {
@@ -98,7 +107,6 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 143%;
-  line-height: 133%;
   letter-spacing: -0.02em;
   color: #262626;
 }

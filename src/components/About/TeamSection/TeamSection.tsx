@@ -13,7 +13,7 @@ const TeamSection: React.FC = () => {
             <div className={styles.cardContent}>
               <div className={styles.dogEar}></div>
               <svg width="61" height="67" viewBox="0 0 61 67" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.04558 51.1973L2.19531 3.41382L57.9075 65.6754L16.3037 65.5451C8.40442 65.5203 2.02083 59.0966 2.04558 51.1973Z" fill="#FBF8F0" stroke="black" stroke-width="2.38384" />
+                <path d="M2.04558 51.1973L2.19531 3.41382L57.9075 65.6754L16.3037 65.5451C8.40442 65.5203 2.02083 59.0966 2.04558 51.1973Z" fill="#FBF8F0" stroke="black" strokeWidth="2.38384" />
               </svg>
               <div className={styles.memberInfo}>
                 <h3 className={styles.memberName}>Alex<br />Kondratenko</h3>
@@ -41,7 +41,7 @@ const TeamSection: React.FC = () => {
             <div className={styles.cardContent}>
               <div className={styles.dogEar}></div>
               <svg width="61" height="67" viewBox="0 0 61 67" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.04558 51.1973L2.19531 3.41382L57.9075 65.6754L16.3037 65.5451C8.40442 65.5203 2.02083 59.0966 2.04558 51.1973Z" fill="#FBF8F0" stroke="black" stroke-width="2.38384" />
+                <path d="M2.04558 51.1973L2.19531 3.41382L57.9075 65.6754L16.3037 65.5451C8.40442 65.5203 2.02083 59.0966 2.04558 51.1973Z" fill="#FBF8F0" stroke="black" strokeWidth="2.38384" />
               </svg>
               <div className={styles.memberInfo}>
                 <h3 className={styles.memberName}>Vladimir<br />Pulniashenko</h3>
@@ -69,7 +69,7 @@ const TeamSection: React.FC = () => {
             <div className={styles.cardContent}>
               <div className={styles.dogEar}></div>
               <svg width="61" height="67" viewBox="0 0 61 67" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.04558 51.1973L2.19531 3.41382L57.9075 65.6754L16.3037 65.5451C8.40442 65.5203 2.02083 59.0966 2.04558 51.1973Z" fill="#FBF8F0" stroke="black" stroke-width="2.38384" />
+                <path d="M2.04558 51.1973L2.19531 3.41382L57.9075 65.6754L16.3037 65.5451C8.40442 65.5203 2.02083 59.0966 2.04558 51.1973Z" fill="#FBF8F0" stroke="black" strokeWidth="2.38384" />
               </svg>
               <div className={styles.memberInfo}>
                 <h3 className={styles.memberName}>Esenia<br />Romanovskaia</h3>
