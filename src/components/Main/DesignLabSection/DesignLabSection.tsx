@@ -49,7 +49,7 @@ const DesignLabSection: React.FC = () => {
         trigger: sectionRef.current,
         start: "top -100", // Start when the top of the section is 100px above viewport top
         end: "+=600", // Animation continues for 600px of scrolling
-        scrub: 2, // Smooth scrubbing effect, value reduced for more responsive animation
+        scrub: 8, // Smooth scrubbing effect, value reduced for more responsive animation
         pin: true, // Pin the section
         pinSpacing: true, // Maintain spacing
         anticipatePin: 1,

@@ -52,7 +52,7 @@ const StackSection: React.FC = () => {
         trigger: sectionRef.current,
         start: "top -400", 
         end: "+=800", 
-        scrub: 2,
+        scrub: 8,
         pin: true,
         pinSpacing: true,
         anticipatePin: 1,
