@@ -190,23 +190,24 @@
 
 .designItem p {
   position: absolute;
-  font-weight: 400;
-  font-size: 16px;
   font-family: monospace;
   line-height: 1.4;
-  color: #777;
+  font-weight: 700;
+  font-size: 14px;
+  color: #262626;
   transition: opacity 0.3s ease;
   white-space: nowrap;
 }
 
 /* Text position styles */
 .textRight {
-  left: 110%; /* Position text to the right of the image */
+  left: 140%; /* Position text to the right of the image */
   top: 50%;
   transform: translateY(-50%);
+  
 }
 .textLeft {
-  right: 110%; /* Position text to the right of the image */
+  right: 130%; /* Position text to the right of the image */
   top: 50%;
   transform: translateY(-50%);
 }
@@ -278,6 +279,7 @@
     text-align: center;
     left: 0;
     transform: none;
+    
   }
   
   .designItem {

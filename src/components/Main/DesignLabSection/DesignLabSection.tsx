@@ -36,10 +36,10 @@ const DesignLabSection: React.FC = () => {
     }
 
     // Set initial positions (scattered)
-    gsap.set(design1Ref.current, { left: '75%', top: '50px', opacity: 1 });
-    gsap.set(design2Ref.current, { left: '25%', top: '80px', opacity: 1 });
-    gsap.set(design3Ref.current, { left: '30%', top: '300px', opacity: 1 });
-    gsap.set(design4Ref.current, { left: '70%', top: '250px', opacity: 1 });
+    gsap.set(design1Ref.current, { left: '15%', top: '70px', opacity: 1 });
+    gsap.set(design2Ref.current, { left: '55%', top: '20px', opacity: 1 });
+    gsap.set(design3Ref.current, { left: '70%', top: '300px', opacity: 1 });
+    gsap.set(design4Ref.current, { left: '30%', top: '370px', opacity: 1 });
     gsap.set(logoRef.current, { left: '50%', top: '180px', xPercent: -50, opacity: 0, scale: 0.8 });
     gsap.set(buttonRef.current, { left: '50%', top: '260px', xPercent: -50, opacity: 0 });
 
@@ -47,7 +47,7 @@ const DesignLabSection: React.FC = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top -100", // Start when the top of the section is 100px above viewport top
+        start: "top -220", // Start when the top of the section is 100px above viewport top
         end: "+=600", // Animation continues for 600px of scrolling
         scrub: 8, // Smooth scrubbing effect, value reduced for more responsive animation
         pin: true, // Pin the section
@@ -154,7 +154,7 @@ const DesignLabSection: React.FC = () => {
             ref={design1Ref}
           >
             <Image src={design1} alt="Product & UI/UX Design" width={99} height={185} />
-            <p className={styles.textRight}>Product & UI/UX<br />Design</p>
+            <p className={styles.textLeft}>Illustration &<br /> Motion Design</p>
           </div>
           
           <div 
@@ -162,7 +162,7 @@ const DesignLabSection: React.FC = () => {
             ref={design2Ref}
           >
             <Image src={design2} alt="Illustration & Motion Design" width={99} height={185} />
-            <p className={styles.textLeft}>Illustration &<br />Motion Design</p>
+            <p className={styles.textRight}>Product & UI/UX &<br />Design</p>
           </div>
           
           <div 
@@ -170,7 +170,7 @@ const DesignLabSection: React.FC = () => {
             ref={design3Ref}
           >
             <Image src={design3} alt="Branding & Visual Identity" width={100} height={92} />
-            <p className={styles.textLeft}>Branding & Visual<br />Identity</p>
+            <p className={styles.textRight}>Branding & Visual<br />Identity</p>
           </div>
           
           <div 
