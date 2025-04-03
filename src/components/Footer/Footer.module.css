@@ -10,13 +10,15 @@
     max-width: 1260px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
   }
   
   .footerContent {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;
+    width: 100%;
+    /* flex-wrap: wrap; */
   }
   
   .logoSection {
@@ -58,7 +60,7 @@
   .navLink {
     color: white;
     text-decoration: none;
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
     font-size: 1rem;
     transition: opacity 0.2s ease;
   }
@@ -72,6 +74,8 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 1.5rem;
+    width: auto;
+    justify-self: flex-end;
   }
   
   .socialLinks {
@@ -96,7 +100,8 @@
   
   .bookCallButton {
     display: inline-block;
-    background-color: #a8c8b0;
+    background-color: #88af8d;
+    box-shadow: 4px 4px 0 0 #232323;
     color: #222;
     padding: 0.8rem 2rem;
     text-decoration: none;
@@ -113,13 +118,13 @@
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .footerContent {
-      flex-direction: column;
+      /* flex-direction: column; */
     }
     
-    .logoSection, .navigation, .socialSection {
+    .logoSection, .navigation {
       width: 100%;
       align-items: flex-start;
-      margin-bottom: 2rem;
+      margin-bottom: 0;
     }
     
     .socialSection {
@@ -127,16 +132,36 @@
       justify-content: space-between;
       align-items: center;
     }
+    .bookCallButton{
+      border: 1px solid #080808;
+      padding: 6px 11px;
+    }
+    .nav{
+      gap: 10px;
+    }
+    .navLink{
+      
+      font-weight: 500;
+      font-size: 9px;
+      line-height: 266%;
+      letter-spacing: -0.03em;
+
+    }
+    .socialIcon{
+      border: 0.67px solid #353534;
+      border-radius: 6px;
+      width: 35px;
+      height: 35px;
+    }
+    .copyright{
+      font-weight: 400;
+      font-size: 9px;
+      line-height: 144%;
+      letter-spacing: -0.04em;
+      color: rgba(251, 248, 243, 0.7);
+    }
+    .logo img{
+      max-width: 110px;
+    }
   }
   
-  @media (max-width: 480px) {
-    .nav {
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    .socialSection {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }

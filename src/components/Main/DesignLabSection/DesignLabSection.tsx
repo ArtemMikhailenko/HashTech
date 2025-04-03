@@ -20,6 +20,7 @@ const DesignLabSection: React.FC = () => {
   const logoRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const contextRef = useRef<gsap.Context | null>(null);
 
   // Check if we're on mobile
   useEffect(() => {
@@ -46,182 +47,189 @@ const DesignLabSection: React.FC = () => {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
     
-    // Clean up any existing animations
-    const cleanupAnimations = () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      gsap.killTweensOf([
-        design1Ref.current, 
-        design2Ref.current, 
-        design3Ref.current, 
-        design4Ref.current,
-        logoRef.current,
-        buttonRef.current
-      ]);
-    };
+    // Create a new GSAP context for this component
+    // This isolates the animations from other components
+    const context = gsap.context(() => {
+      // Clean up any existing animations within this context
+      if (contextRef.current) {
+        contextRef.current.revert();
+      }
+      
+      // Make sure all refs are available
+      if (!sectionRef.current ||
+          !design1Ref.current || 
+          !design2Ref.current || 
+          !design3Ref.current || 
+          !design4Ref.current || 
+          !logoRef.current || 
+          !buttonRef.current) {
+        return;
+      }
+
+      if (isMobile) {
+        // MOBILE ANIMATION
+        console.log("Setting up mobile animations for Design Lab section");
+        
+        // Set initial scattered positions for mobile
+        gsap.set(design1Ref.current, { left: '5%', top: '120px', opacity: 1 });
+        gsap.set(design2Ref.current, { left: '40%', top: '10px', opacity: 1 });
+        gsap.set(design3Ref.current, { left: '65%', top: '120px', opacity: 1 });
+        gsap.set(design4Ref.current, { left: '30%', top: '300px', opacity: 1 });
+        gsap.set(logoRef.current, { left: '50%', top: '90px', xPercent: -50, opacity: 0, scale: 0.8 });
+        gsap.set(buttonRef.current, { left: '50%', top: '150px', xPercent: -50, opacity: 0 });
+
+        // Create animation for mobile
+        const mobileTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top -5%",
+            end: "+=600",
+            scrub: 4,
+            pin: true,
+            markers: false,
+          }
+        });
+
+        // Mobile animations - converge to center
+        mobileTl.to(design1Ref.current, {
+          left: '50%',
+          top: '10px',
+          xPercent: -50,
+          ease: "power2.inOut",
+          duration: 2
+        }, 0);
+        
+        mobileTl.to(design2Ref.current, {
+          left: '50%',
+          top: '50px',
+          xPercent: -50,
+          ease: "power2.inOut",
+          duration: 2
+        }, 0.1);
+        
+        mobileTl.to(design3Ref.current, {
+          left: '50%',
+          top: '130px',
+          xPercent: -50,
+          ease: "power2.inOut",
+          duration: 2
+        }, 0.2);
+        
+        mobileTl.to(design4Ref.current, {
+          left: '50%',
+          top: '162px',
+          xPercent: -50,
+          ease: "power2.inOut",
+          duration: 2
+        }, 0.3);
+        
+        mobileTl.to(logoRef.current, { 
+          opacity: 1, 
+          scale: 1,
+          ease: "power1.inOut",
+          duration: 1.5
+        }, 1);
+        
+        mobileTl.to(buttonRef.current, { 
+          opacity: 1, 
+          ease: "power1.inOut",
+          duration: 1.5
+        }, 1.2);
+        
+      } else {
+        // DESKTOP ANIMATION
+        console.log("Setting up desktop animations for Design Lab section");
+        
+        // Set initial positions (scattered)
+        gsap.set(design1Ref.current, { left: '15%', top: '70px', opacity: 1 });
+        gsap.set(design2Ref.current, { left: '55%', top: '20px', opacity: 1 });
+        gsap.set(design3Ref.current, { left: '70%', top: '300px', opacity: 1 });
+        gsap.set(design4Ref.current, { left: '30%', top: '350px', opacity: 1 });
+        gsap.set(logoRef.current, { left: '50%', top: '180px', xPercent: -50, opacity: 0, scale: 0.8 });
+        gsap.set(buttonRef.current, { left: '50%', top: '260px', xPercent: -50, opacity: 0 });
+
+        // Create the animation timeline for desktop
+        const desktopTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top -220",
+            end: "+=600",
+            snap: {
+              snapTo: [0, 0.5, 1], // Snap to start, middle, and end points
+              duration: {min: 0.2, max: 0.6}, // Faster for small jumps, slower for larger ones
+              ease: "power2.out"
+            },
+            scrub: 8,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            markers: false,
+          }
+        });
+
+        // Desktop animations - single animation per element
+        desktopTl.to(design1Ref.current, {
+          left: '50%',
+          top: '50px',
+          xPercent: -50,
+          ease: "power2.inOut",
+          duration: 2
+        }, 0);
+        
+        desktopTl.to(design2Ref.current, {
+          left: '50%',
+          top: '130px',
+          xPercent: -50,
+          ease: "power2.inOut",
+          duration: 2
+        }, 0.1);
+        
+        desktopTl.to(design3Ref.current, {
+          left: '50%',
+          top: '270px',
+          xPercent: -50,
+          ease: "power2.inOut",
+          duration: 2
+        }, 0.2);
+        
+        desktopTl.to(design4Ref.current, {
+          left: '50%',
+          top: '320px',
+          xPercent: -50,
+          ease: "power2.inOut",
+          duration: 2
+        }, 0.3);
+        
+        // Logo and button appear with delayed timing
+        desktopTl.to(logoRef.current, { 
+          opacity: 1, 
+          scale: 1.1,
+          ease: "power1.inOut",
+          duration: 2
+        }, 1.5);
+        
+        desktopTl.to(buttonRef.current, { 
+          opacity: 1, 
+          ease: "power1.inOut",
+          duration: 2
+        }, 2);
+      }
+    }, sectionRef); // Scope the context to our section element
     
-    cleanupAnimations();
-    
-    // Make sure all refs are available
-    if (!sectionRef.current ||
-        !design1Ref.current || 
-        !design2Ref.current || 
-        !design3Ref.current || 
-        !design4Ref.current || 
-        !logoRef.current || 
-        !buttonRef.current) {
-      return;
-    }
-
-    if (isMobile) {
-      // MOBILE ANIMATION
-      console.log("Setting up mobile animations");
-      
-      // Set initial scattered positions for mobile
-      gsap.set(design1Ref.current, { left: '5%', top: '120px', opacity: 1 });
-      gsap.set(design2Ref.current, { left: '40%', top: '10px', opacity: 1 });
-      gsap.set(design3Ref.current, { left: '65%', top: '120px', opacity: 1 });
-      gsap.set(design4Ref.current, { left: '30%', top: '300px', opacity: 1 });
-      gsap.set(logoRef.current, { left: '50%', top: '230px', xPercent: -50, opacity: 0, scale: 0.8 });
-      gsap.set(buttonRef.current, { left: '50%', top: '350px', xPercent: -50, opacity: 0 });
-
-      // Create animation for mobile
-      const mobileTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 5%",
-          end: "+=600",
-          scrub: 4,
-          pin: true,
-          markers: false,
-        }
-      });
-
-      // Mobile animations - converge to center
-      mobileTl.to(design1Ref.current, {
-        left: '50%',
-        top: '10px',
-        xPercent: -50,
-        ease: "power2.inOut",
-        duration: 2
-      }, 0);
-      
-      mobileTl.to(design2Ref.current, {
-        left: '50%',
-        top: '50px',
-        xPercent: -50,
-        ease: "power2.inOut",
-        duration: 2
-      }, 0.1);
-      
-      mobileTl.to(design3Ref.current, {
-        left: '50%',
-        top: '130px',
-        xPercent: -50,
-        ease: "power2.inOut",
-        duration: 2
-      }, 0.2);
-      
-      mobileTl.to(design4Ref.current, {
-        left: '50%',
-        top: '162px',
-        xPercent: -50,
-        ease: "power2.inOut",
-        duration: 2
-      }, 0.3);
-      
-      mobileTl.to(logoRef.current, { 
-        opacity: 1, 
-        scale: 1,
-        ease: "power1.inOut",
-        duration: 1.5
-      }, 1);
-      
-      mobileTl.to(buttonRef.current, { 
-        opacity: 1, 
-        ease: "power1.inOut",
-        duration: 1.5
-      }, 1.2);
-      
-    } else {
-      // DESKTOP ANIMATION
-      // Set initial positions (scattered)
-      gsap.set(design1Ref.current, { left: '15%', top: '70px', opacity: 1 });
-      gsap.set(design2Ref.current, { left: '55%', top: '20px', opacity: 1 });
-      gsap.set(design3Ref.current, { left: '70%', top: '300px', opacity: 1 });
-      gsap.set(design4Ref.current, { left: '30%', top: '370px', opacity: 1 });
-      gsap.set(logoRef.current, { left: '50%', top: '180px', xPercent: -50, opacity: 0, scale: 0.8 });
-      gsap.set(buttonRef.current, { left: '50%', top: '260px', xPercent: -50, opacity: 0 });
-
-      // Create the animation timeline for desktop
-      const desktopTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top -220",
-          end: "+=600",
-          scrub: 8,
-          pin: true,
-          pinSpacing: true,
-          anticipatePin: 1,
-          markers: false,
-        }
-      });
-
-      // Desktop animations - single animation per element
-      desktopTl.to(design1Ref.current, {
-        left: '50%',
-        top: '50px',
-        xPercent: -50,
-        ease: "power2.inOut",
-        duration: 2
-      }, 0);
-      
-      desktopTl.to(design2Ref.current, {
-        left: '50%',
-        top: '130px',
-        xPercent: -50,
-        ease: "power2.inOut",
-        duration: 2
-      }, 0.1);
-      
-      desktopTl.to(design3Ref.current, {
-        left: '50%',
-        top: '270px',
-        xPercent: -50,
-        ease: "power2.inOut",
-        duration: 2
-      }, 0.2);
-      
-      desktopTl.to(design4Ref.current, {
-        left: '50%',
-        top: '320px',
-        xPercent: -50,
-        ease: "power2.inOut",
-        duration: 2
-      }, 0.3);
-      
-      // Logo and button appear with delayed timing
-      desktopTl.to(logoRef.current, { 
-        opacity: 1, 
-        scale: 1.1,
-        ease: "power1.inOut",
-        duration: 2
-      }, 1.5);
-      
-      desktopTl.to(buttonRef.current, { 
-        opacity: 1, 
-        ease: "power1.inOut",
-        duration: 2
-      }, 2);
-    }
+    // Store the context so we can revert it later
+    contextRef.current = context;
 
     // Cleanup on unmount or when isMobile changes
     return () => {
-      cleanupAnimations();
+      if (contextRef.current) {
+        contextRef.current.revert(); // This properly cleans up all animations and ScrollTriggers
+        contextRef.current = null;
+      }
     };
   }, [isMobile]); // Re-run when isMobile changes
 
   return (
-    <section className={styles.designLabSection} ref={sectionRef}>
+    <section className={styles.designLabSection} ref={sectionRef} id="design-lab-section">
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>/ Design Lab /</h2>
         
@@ -255,7 +263,7 @@ const DesignLabSection: React.FC = () => {
             ref={design1Ref}
           >
             <Image src={design1} alt="Product & UI/UX Design" width={99} height={185} />
-            <p className={isMobile ? styles.textBottom : styles.textLeft}>Illustration &<br /> Motion Design</p>
+            <p className={isMobile ? styles.textRight : styles.textLeft}>Illustration &<br /> Motion Design</p>
           </div>
           
           <div 
@@ -263,7 +271,7 @@ const DesignLabSection: React.FC = () => {
             ref={design2Ref}
           >
             <Image src={design2} alt="Illustration & Motion Design" width={99} height={185} />
-            <p className={isMobile ? styles.textRight : styles.textRight}>Product & UI/UX<br />Design</p>
+            <p className={isMobile ? styles.textLeft : styles.textRight}>Product & UI/UX<br />Design</p>
           </div>
           
           <div 
@@ -287,7 +295,9 @@ const DesignLabSection: React.FC = () => {
             className={`${styles.logoContainer} ${isMobile ? styles.mobileLogoContainer : ''} ${styles.zIndex5}`}
             ref={logoRef}
           >
-            <h2 className={styles.logoText}>hashtech</h2>
+            <div className={styles.logoText}>
+              <img src="/images/logos/logo-anim.svg" alt="" />
+            </div>
             <div className={styles.logoGlow}></div>
           </div>
           

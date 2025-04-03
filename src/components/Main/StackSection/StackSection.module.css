@@ -1,4 +1,4 @@
-.designLabSection {
+.stackSection {
   position: relative;
   background-color: #eeebe2;
   overflow: hidden;
@@ -106,7 +106,7 @@
   color: #262626;
 }
 
-.designContainer {
+.stackContainer {
   position: relative;
   height: 500px;
   margin-top: 0;
@@ -115,7 +115,7 @@
   overflow: visible;
 }
 
-.mobileDesignContainer {
+.mobileStackContainer {
   height: 650px; /* Taller container for mobile to allow for element positioning */
 }
 
@@ -134,7 +134,7 @@
   font-family: sans-serif;
   margin: 0;
   position: relative;
-  z-index: 2;
+  z-index: 11;
 }
 
 .logoGlow {
@@ -143,35 +143,48 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
-  filter: blur(25px);
-  z-index: 1;
-  transform: scale(2);
+  background: radial-gradient(circle, rgb(238, 235, 226) 0%, rgb(238, 235, 226) 60%);
+  filter: blur(10px);
+  z-index: 10;
+  transform: scale(3.5);
 }
-
 /* Button styling */
 .buttonContainer {
   position: absolute;
   text-align: center;
   pointer-events: none;
-  width: 250px;
+  width: 350px;
 }
 
 .createButton {
   padding: 16px 30px;
-  background-color: #aa98b6;
-  border: none;
+  background-color: #86ad8b;
+  border: 1px solid #080808;
+  width: 100%;
   color: #333;
   font-size: 18px;
   font-weight: 600;
   border-radius: 0;
   cursor: pointer;
   position: relative;
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+  opacity: 0.9;
+  box-shadow: 4px 4px 0 0 #232323;
   pointer-events: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.designItem {
+.createButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+  background-color: #a8c7ad; /* Слегка светлее при наведении */
+}
+
+.createButton:active {
+  transform: translateY(1px);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+}
+
+.stackItem {
   position: absolute;
   display: flex;
   align-items: center;
@@ -181,7 +194,7 @@
   will-change: transform, opacity, left, top;
 }
 
-.designItemRight {
+.stackItemRight {
   flex-direction: row;
 }
 
@@ -192,7 +205,7 @@
 .zIndex4 { z-index: 4; }
 .zIndex5 { z-index: 5; }
 
-.designItem p {
+.stackItem p {
   position: absolute;
   font-weight: 600;
   font-size: 16px;
@@ -214,7 +227,18 @@
   top: 50%;
   transform: translateY(-50%);
 }
-
+.textBottom{
+  bottom: -50px;
+  left: -20px;
+}
+.textRightBottom{
+  left: 110%;
+  top: 90%;
+}
+.textTop{
+  top: -40px;
+  position: absolute;
+}
 .pixelPatternContainer {
   width: 100%;
   overflow: hidden;
@@ -246,7 +270,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
-  .designContainer:not(.mobileDesignContainer) {
+  .stackContainer:not(.mobileStackContainer) {
     height: 350px;
   }
 }
@@ -261,7 +285,7 @@
     max-width: 100%;
   }
   
-  .designContainer:not(.mobileDesignContainer) {
+  .stackContainer:not(.mobileStackContainer) {
     height: 320px;
   }
   
@@ -280,11 +304,15 @@
     flex-direction: column;
     padding: 1.5rem;
   }
-  
+  .logoText img{
+    max-width: 200px;
+  }
   .stackInfo {
     padding: 0;
   }
-  
+  .buttonContainer{
+    width: 300px;
+  }
   .stackDetails p span {
     display: block;
     padding-left: 0;
@@ -297,8 +325,8 @@
   }
 
   /* Mobile design container adjustments */
-  .mobileDesignContainer {
-    height: 700px;
+  .mobileStackContainer {
+    height: 750px; /* Increased height to accommodate fifth element */
   }
 
   /* Adjust logo size on mobile */
@@ -307,30 +335,35 @@
   }
 
   /* Size adjustments for images */
-  .designItem img {
+  .stackItem img {
     max-width: 100%;
     height: auto;
   }
 
   /* Element-specific size adjustments */
-  .designItem:nth-child(1) img {
+  .stackItem:nth-child(1) img {
     max-width: 80px;
   }
 
-  .designItem:nth-child(2) img {
+  .stackItem:nth-child(2) img {
     max-width: 160px;
   }
 
-  .designItem:nth-child(3) img {
+  .stackItem:nth-child(3) img {
     max-width: 80px;
   }
 
-  .designItem:nth-child(4) img {
+  .stackItem:nth-child(4) img {
     max-width: 160px;
+  }
+  
+  /* Fifth element (lego4) */
+  .stackItem:nth-child(5) img {
+    max-width: 130px;
   }
 
   /* Adjustments for text on mobile */
-  .designItem p {
+  .stackItem p {
     background-color: rgba(238, 235, 226, 0.7);
     padding: 2px 6px;
     border-radius: 4px;
@@ -342,24 +375,30 @@
 }
 
 @media (max-width: 576px) {
-  .mobileDesignContainer {
-    /* height: 650px; */
+  .mobileStackContainer {
+    height: 700px;
+  }
+  .buttonContainer{
+    width: 250px;
+  }
+  .stackItem:nth-child(1) img {
+    max-width: 70px;
+  }
+
+  .stackItem:nth-child(2) img {
+    max-width: 140px;
+  }
+
+  .stackItem:nth-child(3) img {
+    max-width: 70px;
+  }
+
+  .stackItem:nth-child(4) img {
+    max-width: 140px;
   }
   
-  .designItem:nth-child(1) img {
-    max-width: 70px;
-  }
-
-  .designItem:nth-child(2) img {
-    max-width: 140px;
-  }
-
-  .designItem:nth-child(3) img {
-    max-width: 70px;
-  }
-
-  .designItem:nth-child(4) img {
-    max-width: 140px;
+  .stackItem:nth-child(5) img {
+    max-width: 110px;
   }
 
   .createButton {
@@ -390,24 +429,28 @@
     font-size: 14px;
   }
   
-  .mobileDesignContainer {
-    height: 300px;
+  .mobileStackContainer {
+    height: 350px;
   }
 
-  .designItem:nth-child(1) img {
+  .stackItem:nth-child(1) img {
     max-width: 61px;
   }
 
-  .designItem:nth-child(2) img {
+  .stackItem:nth-child(2) img {
     max-width: 103px;
   }
 
-  .designItem:nth-child(3) img {
+  .stackItem:nth-child(3) img {
     max-width: 40px;
   }
 
-  .designItem:nth-child(4) img {
+  .stackItem:nth-child(4) img {
     max-width: 104px;
+  }
+  
+  .stackItem:nth-child(5) img {
+    max-width: 90px;
   }
 
   .logoText {

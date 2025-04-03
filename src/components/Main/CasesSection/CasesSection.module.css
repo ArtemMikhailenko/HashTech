@@ -55,7 +55,7 @@
 /* Desktop Cards Grid */
 .cardsContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -63,6 +63,8 @@
 .cardLink {
   text-decoration: none;
   color: inherit;
+  padding: 10px;
+  width: 100%;
 }
 
 .card {
@@ -72,6 +74,7 @@
   height: 327px;
   transition: all 0.3s ease;
   border: 2.38px solid #000;
+  width: 100%;
   box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.645);
 }
 
@@ -333,8 +336,8 @@
   }
   
   .navButton {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
   }
   
   .navigationButtons {

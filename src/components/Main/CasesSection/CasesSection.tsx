@@ -191,7 +191,7 @@ const CasesSection: React.FC = () => {
                 onClick={handlePrev}
                 aria-label="Previous case"
               >
-                <svg width="30" height="30" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="20" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9.25 0.5L0.75 9L9.25 17.5V0.5Z" fill="black" />
                 </svg>
               </button>
@@ -200,7 +200,7 @@ const CasesSection: React.FC = () => {
                 onClick={handleNext}
                 aria-label="Next case"
               >
-                <svg width="30" height="30" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="20" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0.75 0.5L9.25 9L0.75 17.5V0.5Z" fill="black" />
                 </svg>
               </button>
