@@ -95,6 +95,7 @@ const StackSection: React.FC = () => {
           trigger: sectionRef.current,
           start: "top -15%", 
           end: "+=300",
+          pin: true,
           scrub: 4,
           markers: false,
         }

@@ -90,7 +90,8 @@ const DesignLabSection: React.FC = () => {
           trigger: sectionRef.current,
           start: "top 5%",
           end: "+=600",
-          scrub: 1,
+          scrub: 4,
+          pin: true,
           markers: false,
         }
       });
