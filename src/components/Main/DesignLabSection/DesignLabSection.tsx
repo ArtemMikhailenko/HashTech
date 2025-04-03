@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styles from './DesignLabSection.module.css';
 import { gsap } from 'gsap';
@@ -19,10 +19,47 @@ const DesignLabSection: React.FC = () => {
   const design4Ref = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check on initial load
+    checkMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
   
   useEffect(() => {
+    // Make sure we're in the browser
+    if (typeof window === 'undefined') return;
+    
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
+    
+    // Clean up any existing animations
+    const cleanupAnimations = () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      gsap.killTweensOf([
+        design1Ref.current, 
+        design2Ref.current, 
+        design3Ref.current, 
+        design4Ref.current,
+        logoRef.current,
+        buttonRef.current
+      ]);
+    };
+    
+    cleanupAnimations();
     
     // Make sure all refs are available
     if (!sectionRef.current ||
@@ -35,89 +72,152 @@ const DesignLabSection: React.FC = () => {
       return;
     }
 
-    // Set initial positions (scattered)
-    gsap.set(design1Ref.current, { left: '15%', top: '70px', opacity: 1 });
-    gsap.set(design2Ref.current, { left: '55%', top: '20px', opacity: 1 });
-    gsap.set(design3Ref.current, { left: '70%', top: '300px', opacity: 1 });
-    gsap.set(design4Ref.current, { left: '30%', top: '370px', opacity: 1 });
-    gsap.set(logoRef.current, { left: '50%', top: '180px', xPercent: -50, opacity: 0, scale: 0.8 });
-    gsap.set(buttonRef.current, { left: '50%', top: '260px', xPercent: -50, opacity: 0 });
+    if (isMobile) {
+      // MOBILE ANIMATION
+      console.log("Setting up mobile animations");
+      
+      // Set initial scattered positions for mobile
+      gsap.set(design1Ref.current, { left: '5%', top: '120px', opacity: 1 });
+      gsap.set(design2Ref.current, { left: '40%', top: '10px', opacity: 1 });
+      gsap.set(design3Ref.current, { left: '65%', top: '120px', opacity: 1 });
+      gsap.set(design4Ref.current, { left: '30%', top: '300px', opacity: 1 });
+      gsap.set(logoRef.current, { left: '50%', top: '230px', xPercent: -50, opacity: 0, scale: 0.8 });
+      gsap.set(buttonRef.current, { left: '50%', top: '350px', xPercent: -50, opacity: 0 });
 
-    // Create the animation timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top -220", // Start when the top of the section is 100px above viewport top
-        end: "+=600", // Animation continues for 600px of scrolling
-        scrub: 8, // Smooth scrubbing effect, value reduced for more responsive animation
-        pin: true, // Pin the section
-        pinSpacing: true, // Maintain spacing
-        anticipatePin: 1,
-        markers: false, // Set to true for debugging
-      }
-    });
+      // Create animation for mobile
+      const mobileTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 5%",
+          end: "+=600",
+          scrub: 1,
+          markers: false,
+        }
+      });
 
-    // Important: Define the complete target position in a single animation for each element
-    // This prevents the "jumping" behavior when multiple animations target the same properties
-    
-    // Design element 1
-    tl.to(design1Ref.current, {
-      left: '50%',
-      top: '0',
-      xPercent: -50,
-      ease: "power2.inOut",
-      duration: 2
-    }, 0);
-    
-    // Design element 2
-    tl.to(design2Ref.current, {
-      left: '50%',
-      top: '80px',
-      xPercent: -50,
-      ease: "power2.inOut",
-      duration: 2
-    }, 0.1); // Slight stagger
-    
-    // Design element 3 - Fix the jumping issue by having a single animation with final values
-    tl.to(design3Ref.current, {
-      left: '50%',
-      top: '220px',
-      xPercent: -50,
-      ease: "power2.inOut",
-      duration: 2
-    }, 0.2); // Slight stagger
-    
-    // Design element 4 - Fix the jumping issue by having a single animation with final values
-    tl.to(design4Ref.current, {
-      left: '50%',
-      top: '270px',
-      xPercent: -50,
-      ease: "power2.inOut",
-      duration: 2
-    }, 0.3); // Slight stagger
-    
-    // Fade in the logo and button - slightly delayed
-    tl.to(logoRef.current, { 
-      opacity: 1, 
-      scale: 1.1,
-      ease: "power1.inOut",
-      duration: 2
-    }, 1.5); // Delayed more
-    
-    tl.to(buttonRef.current, { 
-      opacity: 1, 
-      ease: "power1.inOut",
-      duration: 2
-    }, 2); // Delayed more
+      // Mobile animations - converge to center
+      mobileTl.to(design1Ref.current, {
+        left: '50%',
+        top: '10px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0);
+      
+      mobileTl.to(design2Ref.current, {
+        left: '50%',
+        top: '50px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.1);
+      
+      mobileTl.to(design3Ref.current, {
+        left: '50%',
+        top: '130px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.2);
+      
+      mobileTl.to(design4Ref.current, {
+        left: '50%',
+        top: '162px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.3);
+      
+      mobileTl.to(logoRef.current, { 
+        opacity: 1, 
+        scale: 1,
+        ease: "power1.inOut",
+        duration: 1.5
+      }, 1);
+      
+      mobileTl.to(buttonRef.current, { 
+        opacity: 1, 
+        ease: "power1.inOut",
+        duration: 1.5
+      }, 1.2);
+      
+    } else {
+      // DESKTOP ANIMATION
+      // Set initial positions (scattered)
+      gsap.set(design1Ref.current, { left: '15%', top: '70px', opacity: 1 });
+      gsap.set(design2Ref.current, { left: '55%', top: '20px', opacity: 1 });
+      gsap.set(design3Ref.current, { left: '70%', top: '300px', opacity: 1 });
+      gsap.set(design4Ref.current, { left: '30%', top: '370px', opacity: 1 });
+      gsap.set(logoRef.current, { left: '50%', top: '180px', xPercent: -50, opacity: 0, scale: 0.8 });
+      gsap.set(buttonRef.current, { left: '50%', top: '260px', xPercent: -50, opacity: 0 });
 
-    // Cleanup
+      // Create the animation timeline for desktop
+      const desktopTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top -220",
+          end: "+=600",
+          scrub: 8,
+          pin: true,
+          pinSpacing: true,
+          anticipatePin: 1,
+          markers: false,
+        }
+      });
+
+      // Desktop animations - single animation per element
+      desktopTl.to(design1Ref.current, {
+        left: '50%',
+        top: '50px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0);
+      
+      desktopTl.to(design2Ref.current, {
+        left: '50%',
+        top: '130px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.1);
+      
+      desktopTl.to(design3Ref.current, {
+        left: '50%',
+        top: '270px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.2);
+      
+      desktopTl.to(design4Ref.current, {
+        left: '50%',
+        top: '320px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.3);
+      
+      // Logo and button appear with delayed timing
+      desktopTl.to(logoRef.current, { 
+        opacity: 1, 
+        scale: 1.1,
+        ease: "power1.inOut",
+        duration: 2
+      }, 1.5);
+      
+      desktopTl.to(buttonRef.current, { 
+        opacity: 1, 
+        ease: "power1.inOut",
+        duration: 2
+      }, 2);
+    }
+
+    // Cleanup on unmount or when isMobile changes
     return () => {
-      if (ScrollTrigger.getAll().length > 0) {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      }
-      tl.kill();
+      cleanupAnimations();
     };
-  }, []);
+  }, [isMobile]); // Re-run when isMobile changes
 
   return (
     <section className={styles.designLabSection} ref={sectionRef}>
@@ -148,13 +248,13 @@ const DesignLabSection: React.FC = () => {
           </div>
         </div>
         
-        <div className={styles.designContainer} ref={designContainerRef}>
+        <div className={`${styles.designContainer} ${isMobile ? styles.mobileDesignContainer : ''}`} ref={designContainerRef}>
           <div 
             className={`${styles.designItem} ${styles.designItemRight} ${styles.zIndex4}`}
             ref={design1Ref}
           >
             <Image src={design1} alt="Product & UI/UX Design" width={99} height={185} />
-            <p className={styles.textLeft}>Illustration &<br /> Motion Design</p>
+            <p className={isMobile ? styles.textBottom : styles.textLeft}>Illustration &<br /> Motion Design</p>
           </div>
           
           <div 
@@ -162,7 +262,7 @@ const DesignLabSection: React.FC = () => {
             ref={design2Ref}
           >
             <Image src={design2} alt="Illustration & Motion Design" width={99} height={185} />
-            <p className={styles.textRight}>Product & UI/UX &<br />Design</p>
+            <p className={isMobile ? styles.textRight : styles.textRight}>Product & UI/UX<br />Design</p>
           </div>
           
           <div 
@@ -170,7 +270,7 @@ const DesignLabSection: React.FC = () => {
             ref={design3Ref}
           >
             <Image src={design3} alt="Branding & Visual Identity" width={100} height={92} />
-            <p className={styles.textRight}>Branding & Visual<br />Identity</p>
+            <p className={isMobile ? styles.textBottom : styles.textRight}>Branding & Visual<br />Identity</p>
           </div>
           
           <div 
@@ -178,12 +278,12 @@ const DesignLabSection: React.FC = () => {
             ref={design4Ref}
           >
             <Image src={design4} alt="Creative Content & Gamification" width={170} height={178} />
-            <p className={styles.textLeft}>Creative Content<br />& Gamification</p>
+            <p className={isMobile ? styles.textBottom : styles.textLeft}>Creative Content<br />& Gamification</p>
           </div>
           
           {/* Logo in the center - initially hidden, appears on scroll */}
           <div 
-            className={`${styles.logoContainer} ${styles.zIndex5}`}
+            className={`${styles.logoContainer} ${isMobile ? styles.mobileLogoContainer : ''} ${styles.zIndex5}`}
             ref={logoRef}
           >
             <h2 className={styles.logoText}>hashtech</h2>
@@ -192,7 +292,7 @@ const DesignLabSection: React.FC = () => {
           
           {/* Button - initially hidden, appears on scroll */}
           <div 
-            className={`${styles.buttonContainer} ${styles.zIndex5}`}
+            className={`${styles.buttonContainer} ${isMobile ? styles.mobileButtonContainer : ''} ${styles.zIndex5}`}
             ref={buttonRef}
           >
             <button className={styles.createButton}>Let's create together</button>

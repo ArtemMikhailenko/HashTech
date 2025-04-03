@@ -1,11 +1,11 @@
 'use client'
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styles from './StackSection.module.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import pixelPattern from '../../../../public/images/pixel-pattern.png';
-import dots from '../../../../public/images/dot-pattern2.png'
+import dots from '../../../../public/images/dot-pattern2.png';
 
 import lego1 from '../../../../public/images/lego1.svg';
 import lego2 from '../../../../public/images/lego2.svg';
@@ -20,12 +20,51 @@ const StackSection: React.FC = () => {
   const design2Ref = useRef<HTMLDivElement>(null);
   const design3Ref = useRef<HTMLDivElement>(null);
   const design4Ref = useRef<HTMLDivElement>(null);
+  const design5Ref = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check on initial load
+    checkMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
   
   useEffect(() => {
+    // Make sure we're in the browser
+    if (typeof window === 'undefined') return;
+    
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
+    
+    // Clean up any existing animations
+    const cleanupAnimations = () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      gsap.killTweensOf([
+        design1Ref.current, 
+        design2Ref.current, 
+        design3Ref.current, 
+        design4Ref.current,
+        design5Ref.current,
+        logoRef.current,
+        buttonRef.current
+      ]);
+    };
+    
+    cleanupAnimations();
     
     // Make sure all refs are available
     if (!sectionRef.current ||
@@ -38,89 +77,154 @@ const StackSection: React.FC = () => {
       return;
     }
 
-    // Set initial positions (scattered)
-    gsap.set(design1Ref.current, { left: '75%', top: '0px', opacity: 1 });
-    gsap.set(design2Ref.current, { left: '25%', top: '30px', opacity: 1 });
-    gsap.set(design3Ref.current, { left: '30%', top: '340px', opacity: 1 });
-    gsap.set(design4Ref.current, { left: '70%', top: '200px', opacity: 1 });
-    gsap.set(logoRef.current, { left: '50%', top: '180px', xPercent: -50, opacity: 0, scale: 0.8 });
-    gsap.set(buttonRef.current, { left: '50%', top: '260px', xPercent: -50, opacity: 0 });
+    if (isMobile) {
+      // MOBILE ANIMATION
+      console.log("Setting up mobile animations");
+      
+      // Set initial scattered positions for mobile
+      gsap.set(design1Ref.current, { left: '40%', top: '10px', xPercent: 0, opacity: 1 });
+      gsap.set(design2Ref.current, { left: '-1%', top: '90px', xPercent: 0, opacity: 1 });
+      gsap.set(design3Ref.current, { left: '60%', top: '220px', xPercent: 0, opacity: 1 });
+      gsap.set(design4Ref.current, { left: '73%', top: '120px', xPercent: 0, opacity: 1 });
+      gsap.set(logoRef.current, { left: '50%', top: '90px', xPercent: -50, opacity: 0, scale: 0.8 });
+      gsap.set(buttonRef.current, { left: '50%', top: '160px', xPercent: -50, opacity: 0 });
 
-    // Create the animation timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top -400", 
-        end: "+=800", 
-        scrub: 8,
-        pin: true,
-        pinSpacing: true,
-        anticipatePin: 1,
-        markers: false,
-      }
-    });
+      // Create animation for mobile
+      const mobileTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top -15%", 
+          end: "+=300",
+          scrub: 4,
+          markers: false,
+        }
+      });
 
-    // Animation for each element with a single tween for both position properties
-    // Each element gets exactly ONE animation that defines its complete final position
-    
-    // Design element 1 - using 55.5% left directly
-    tl.to(design1Ref.current, {
-      left: '55.5%',
-      top: '135px',
-      xPercent: -50,
-      ease: "power2.inOut",
-      duration: 2
-    }, 0);
-    
-    // Design element 2
-    tl.to(design2Ref.current, {
-      left: '50%',
-      top: '30px',
-      xPercent: -50,
-      ease: "power2.inOut",
-      duration: 2
-    }, 0.1);
-    
-    // Design element 3
-    tl.to(design3Ref.current, {
-      left: '53%',
-      top: '360px',
-      xPercent: -50,
-      ease: "power2.inOut",
-      duration: 2
-    }, 0.2);
-    
-    // Design element 4
-    tl.to(design4Ref.current, {
-      left: '35%',
-      top: '280px',
-      xPercent: -50,
-      ease: "power2.inOut",
-      duration: 2
-    }, 0.3);
-    
-    // Logo and button appear with delayed timing
-    tl.to(logoRef.current, { 
-      opacity: 1, 
-      scale: 1.1,
-      ease: "power1.inOut",
-      duration: 2
-    }, 1);
-    
-    tl.to(buttonRef.current, { 
-      opacity: 1, 
-      ease: "power1.inOut",
-      duration: 2
-    }, 1.2);
+      // Mobile animations - converge to center
+      mobileTl.to(design1Ref.current, {
+        left: '55.5%',
+        top: '90px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0);
+      
+      mobileTl.to(design2Ref.current, {
+        left: '50%',
+        top: '60px',
+        xPercent: -50,
+        ease: "power2.inOut", 
+        duration: 2
+      }, 0.1);
+      
+      mobileTl.to(design3Ref.current, {
+        left: '53%',
+        top: '200px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.2);
+      
+      mobileTl.to(design4Ref.current, {
+        left: '50%',
+        top: '127px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.3);
+      
+      mobileTl.to(logoRef.current, { 
+        opacity: 1, 
+        scale: 1,
+        ease: "power1.inOut",
+        duration: 1.5
+      }, 1);
+      
+      mobileTl.to(buttonRef.current, { 
+        opacity: 1, 
+        ease: "power1.inOut",
+        duration: 1.5
+      }, 1.2);
+      
+    } else {
+      // DESKTOP ANIMATION
+      console.log("Setting up desktop animations");
+      
+      // Set initial positions (scattered)
+      gsap.set(design1Ref.current, { left: '75%', top: '0px', opacity: 1, xPercent: 0 });
+      gsap.set(design2Ref.current, { left: '25%', top: '30px', opacity: 1, xPercent: 0 });
+      gsap.set(design3Ref.current, { left: '30%', top: '340px', opacity: 1, xPercent: 0 });
+      gsap.set(design4Ref.current, { left: '70%', top: '200px', opacity: 1, xPercent: 0 });
+      gsap.set(logoRef.current, { left: '50%', top: '180px', xPercent: -50, opacity: 0, scale: 0.8 });
+      gsap.set(buttonRef.current, { left: '50%', top: '260px', xPercent: -50, opacity: 0 });
 
-    // Cleanup
+      // Create the animation timeline for desktop
+      const desktopTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top -400", 
+          end: "+=800", 
+          scrub: 8,
+          pin: true,
+          pinSpacing: true,
+          anticipatePin: 1,
+          markers: false,
+        }
+      });
+
+      // Desktop animations - single animation per element
+      desktopTl.to(design1Ref.current, {
+        left: '55.5%',
+        top: '135px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0);
+      
+      desktopTl.to(design2Ref.current, {
+        left: '50%',
+        top: '30px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.1);
+      
+      desktopTl.to(design3Ref.current, {
+        left: '53%',
+        top: '360px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.2);
+      
+      desktopTl.to(design4Ref.current, {
+        left: '35%',
+        top: '280px',
+        xPercent: -50,
+        ease: "power2.inOut",
+        duration: 2
+      }, 0.3);
+      
+      // Logo and button appear with delayed timing
+      desktopTl.to(logoRef.current, { 
+        opacity: 1, 
+        scale: 1.1,
+        ease: "power1.inOut",
+        duration: 2
+      }, 1);
+      
+      desktopTl.to(buttonRef.current, { 
+        opacity: 1, 
+        ease: "power1.inOut",
+        duration: 2
+      }, 1.2);
+    }
+
+    // Cleanup on unmount or when isMobile changes
     return () => {
-      if (ScrollTrigger.getAll().length > 0) {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      }
-      tl.kill();
+      cleanupAnimations();
     };
-  }, []);
+  }, [isMobile]); // Re-run when isMobile changes
 
   return (
     <section className={styles.designLabSection} ref={sectionRef}>
@@ -166,21 +270,21 @@ const StackSection: React.FC = () => {
           </div>
         </div>
         
-        <div className={styles.designContainer} ref={designContainerRef}>
+        <div className={`${styles.designContainer} ${isMobile ? styles.mobileDesignContainer : ''}`} ref={designContainerRef}>
           <div 
-            className={`${styles.designItem} ${styles.designItemRight} ${styles.zIndex2}`}
+            className={`${styles.designItem} ${styles.designItemRight} ${styles.zIndex3}`}
             ref={design1Ref}
           >
             <Image src={lego2} alt="Blockchain apps" width={132} height={178} />
-            <p className={styles.textRight}>Product & UI/UX<br />Design</p>
+            <p className={styles.textRight}>Tap 2 Earn games<br /> development</p>
           </div>
           
           <div 
-            className={`${styles.designItem} ${styles.designItemRight} ${styles.zIndex4}`}
+            className={`${styles.designItem} ${styles.designItemRight} ${styles.zIndex3}`}
             ref={design2Ref}
           >
             <Image src={lego1} alt="Tap 2 Earn games" width={265} height={305} />
-            <p className={styles.textLeft}>Illustration &<br />Motion Design</p>
+            <p className={styles.textRight}>Blockchain apps <br />development</p>
           </div>
           
           <div 
@@ -188,7 +292,7 @@ const StackSection: React.FC = () => {
             ref={design3Ref}
           >
             <Image src={lego5} alt="DeFi apps" width={110} height={77} />
-            <p className={styles.textRight}>Branding & Visual<br />Identity</p>
+            <p className={styles.textRight}>Smart Contracts<br />development</p>
           </div>
           
           <div 
@@ -196,7 +300,7 @@ const StackSection: React.FC = () => {
             ref={design4Ref}
           >
             <Image src={lego3} alt="AI Agents" width={265} height={160} />
-            <p className={styles.textLeft}>Creative Content<br />& Gamification</p>
+            <p className={styles.textRight}>DeFi apps<br />development</p>
           </div>
           
           {/* Logo in the center - initially hidden, appears on scroll */}

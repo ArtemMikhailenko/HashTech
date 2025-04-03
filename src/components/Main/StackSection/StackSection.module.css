@@ -115,6 +115,10 @@
   overflow: visible;
 }
 
+.mobileDesignContainer {
+  height: 650px; /* Taller container for mobile to allow for element positioning */
+}
+
 /* Logo styling */
 .logoContainer {
   position: absolute;
@@ -190,12 +194,11 @@
 
 .designItem p {
   position: absolute;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 16px;
   font-family: monospace;
   line-height: 1.4;
   color: #777;
-  transition: opacity 0.3s ease;
   white-space: nowrap;
 }
 
@@ -243,7 +246,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
-  .designContainer {
+  .designContainer:not(.mobileDesignContainer) {
     height: 350px;
   }
 }
@@ -258,15 +261,20 @@
     max-width: 100%;
   }
   
-  .designContainer {
+  .designContainer:not(.mobileDesignContainer) {
     height: 320px;
   }
   
   .sectionTitle {
     font-size: 1.8rem;
   }
+
+  .logoText {
+    font-size: 48px;
+  }
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
   .stackCard {
     flex-direction: column;
@@ -275,10 +283,6 @@
   
   .stackInfo {
     padding: 0;
-  }
-  
-  .designContainer {
-    height: 320px;
   }
   
   .stackDetails p span {
@@ -291,39 +295,84 @@
     font-size: 1.6rem;
     text-align: center;
   }
-  
-  /* For smaller screens, adjust the absolute positioning */
-  .designItem p {
-    position: relative;
-    margin-top: 10px;
-    text-align: center;
-    left: 0;
-    transform: none;
+
+  /* Mobile design container adjustments */
+  .mobileDesignContainer {
+    height: 700px;
   }
-  
-  .designItem {
-    flex-direction: column !important;
-    align-items: center;
-    justify-content: center;
+
+  /* Adjust logo size on mobile */
+  .logoText {
+    font-size: 42px;
+  }
+
+  /* Size adjustments for images */
+  .designItem img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Element-specific size adjustments */
+  .designItem:nth-child(1) img {
+    max-width: 80px;
+  }
+
+  .designItem:nth-child(2) img {
+    max-width: 160px;
+  }
+
+  .designItem:nth-child(3) img {
+    max-width: 80px;
+  }
+
+  .designItem:nth-child(4) img {
+    max-width: 160px;
+  }
+
+  /* Adjustments for text on mobile */
+  .designItem p {
+    background-color: rgba(238, 235, 226, 0.7);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: normal;
+    text-align: center;
+    width: max-content;
   }
 }
 
 @media (max-width: 576px) {
-  .designContainer {
-    height: 300px;
+  .mobileDesignContainer {
+    /* height: 650px; */
   }
   
-  .designItem img {
-    transform: scale(0.9);
-    transform-origin: center;
+  .designItem:nth-child(1) img {
+    max-width: 70px;
   }
-  
-  .designItem p {
-    font-size: 0.8rem;
+
+  .designItem:nth-child(2) img {
+    max-width: 140px;
+  }
+
+  .designItem:nth-child(3) img {
+    max-width: 70px;
+  }
+
+  .designItem:nth-child(4) img {
+    max-width: 140px;
+  }
+
+  .createButton {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  .logoText {
+    font-size: 36px;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 576px) {
   .container {
     padding: 0 1rem;
   }
@@ -341,7 +390,27 @@
     font-size: 14px;
   }
   
-  .designItem img {
-    transform: scale(0.8);
+  .mobileDesignContainer {
+    height: 300px;
+  }
+
+  .designItem:nth-child(1) img {
+    max-width: 61px;
+  }
+
+  .designItem:nth-child(2) img {
+    max-width: 103px;
+  }
+
+  .designItem:nth-child(3) img {
+    max-width: 40px;
+  }
+
+  .designItem:nth-child(4) img {
+    max-width: 104px;
+  }
+
+  .logoText {
+    font-size: 32px;
   }
 }

@@ -78,14 +78,12 @@
   transition: top 0.3s ease, left 0.3s ease;
 }
 
-/* Аналогичный эффект для правой карточки */
 .cardWrapperR:hover .cardContentR {
   top: 60px;
   right: -30px;
   transition: top 0.3s ease, right 0.3s ease;
 }
 
-/* Плавное изменение позиции svg */
 .cardWrapperR:hover svg {
   top: 64px;
   transition: top 0.3s ease;
@@ -200,9 +198,12 @@ transition: all 0.3s ease;
 
 @media (max-width: 768px) {
   .sectionTitle {
-    font-size: 2rem;
+    font-size: 22px;
+    padding-left: 0;
   }
-  
+  .container{
+    padding: 20px;
+  }
   .cardContent {
     padding: 1.5rem;
     margin: 10px 0 0 10px;
@@ -224,5 +225,9 @@ transition: all 0.3s ease;
     rotate: 3deg;
     transition: all 0.3s ease;
   
+  }
+  .cardWrapper:hover svg {
+    top: 72px;
+    right: 12px;
   }
 }

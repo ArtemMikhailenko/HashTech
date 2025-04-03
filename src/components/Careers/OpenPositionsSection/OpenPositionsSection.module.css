@@ -62,10 +62,15 @@
   /* Responsive styling */
   @media (max-width: 768px) {
     .title {
-      font-size: 2.5rem;
+      font-size: 28px;
     }
     
     .description {
-      font-size: 1.2rem;
+      font-size: 14px;
+      line-height: 136%;
+    }
+    .joinButton{
+      width: 100%;
+      margin-top: 50px;
     }
   }

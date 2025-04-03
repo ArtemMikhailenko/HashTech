@@ -192,18 +192,6 @@ const WorkflowSection: React.FC = () => {
                     </div>
                     <h3 className={styles.stepTitle}>{step.title}</h3>
                     <p className={styles.stepDescription}>{step.description}</p>
-                    
-                    {/* Show vertical arrow for all slides except the last one */}
-                    {index < workflowSteps.length - 1 && (
-                      <div className={styles.mobileArrow}>
-                        <Image 
-                          src={arrow}
-                          alt="Next step"
-                          width={100}
-                          height={40}
-                        />
-                      </div>
-                    )}
                   </div>
                 </SwiperSlide>
               ))}
