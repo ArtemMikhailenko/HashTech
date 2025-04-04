@@ -202,18 +202,18 @@ return (
               onClick={handlePrev}
               aria-label="Previous case"
             >
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M25 10L15 20L25 30" stroke="#EEEBE2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <svg width="20" height="20" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.25 0.5L0.75 9L9.25 17.5V0.5Z" fill="black" />
+                </svg>
             </button>
             <button 
               className={styles.navButton} 
               onClick={handleNext}
               aria-label="Next case"
             >
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 10L25 20L15 30" stroke="#EEEBE2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+             <svg width="20" height="20" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.75 0.5L9.25 9L0.75 17.5V0.5Z" fill="black" />
+                </svg>
             </button>
           </div>
         </div>

@@ -247,6 +247,7 @@
   cursor: pointer;
   width: 100%;
   max-width: 100px;
+  max-height: 35px;
   transition: transform 0.2s;
   margin-top: auto;
   opacity: 0;
@@ -271,7 +272,9 @@
   .header {
     padding: 1.2rem;
   }
-  
+  .contactButton{
+    max-height: 35px;
+  }
   .logo img {
     height: 24px;
     width: auto;

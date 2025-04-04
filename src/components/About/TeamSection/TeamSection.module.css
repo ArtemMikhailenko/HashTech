@@ -52,17 +52,18 @@
   height: 100%;
   margin: -10px 10px 10px -10px;
   box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Add this to keep content contained */
+
 }
 
 /* Fixed dogEar positioning */
 .dogEar {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -1px;
+  right: -1px;
   width: 60px;
   height: 60px;
-  border-radius: 8px 0 0 0;
+  border-radius: 0 10px 0 0;
+  /* border-radius: 8px 0 0 0; */
   background-color: #202020;
   clip-path: polygon(0 0, 100% 0, 100% 100%);
   z-index: 2; /* Ensure proper stacking */
@@ -74,7 +75,7 @@
   top: -3px;
   right: -3px;
   z-index: 3;
-  transform: rotate(-1deg);
+  transform: rotate(-3deg);
 }
 
 .memberInfo {

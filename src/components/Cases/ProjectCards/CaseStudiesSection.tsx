@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useRef } from 'react';
 import styles from './CaseStudiesSection.module.css';
 import Image from 'next/image';
 import pixelPattern from '../../../../public/images/pixel-pattern.png';
@@ -15,10 +16,13 @@ interface CaseStudy {
   cost: string;
   services: string[];
   sectors: CaseTag[];
-  hoverImageUrl:string;
+  hoverImageUrl: string;
 }
 
 const CaseStudiesSection: React.FC = () => {
+  const casesListRef = useRef<HTMLDivElement>(null);
+  const caseCards = useRef<HTMLDivElement[]>([]);
+  
   // Data matches exactly the case studies shown in the image
   const caseStudies: CaseStudy[] = [
     {
@@ -31,7 +35,7 @@ const CaseStudiesSection: React.FC = () => {
         { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
         { name: 'Cryptocurrency', backgroundColor: '#ad85ac' }
       ],
-      hoverImageUrl: '/images/cases/minner.png'  // Добавляем URL для hover-фона
+      hoverImageUrl: '/images/cases/minner.png'
     },
     {
       title: 'Qappi',
@@ -71,21 +75,71 @@ const CaseStudiesSection: React.FC = () => {
     }
   ];
   
+  // Function to check if an element is in viewport center
+  const isElementInViewport = (el: HTMLElement) => {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    
+    // Check if the center of the card is in the middle portion of the screen
+    const cardCenter = rect.top + rect.height / 2;
+    const viewportCenter = windowHeight / 2;
+    const threshold = windowHeight / 4; // Adjust this value to control how close to center it needs to be
+    
+    return Math.abs(cardCenter - viewportCenter) < threshold;
+  };
+  
+  // Handle scroll event to check which cards are in viewport
+  const handleScroll = () => {
+    // Only apply this effect on mobile devices
+    if (window.innerWidth <= 768) {
+      let activeCardFound = false;
+      
+      // First, find which card should be active based on viewport position
+      caseCards.current.forEach((card) => {
+        if (card && isElementInViewport(card) && !activeCardFound) {
+          activeCardFound = true;
+          card.classList.add(styles.activeCard);
+        } else if (card) {
+          card.classList.remove(styles.activeCard);
+        }
+      });
+    }
+  };
+  
+  useEffect(() => {
+    // Initialize the refs array with the card elements
+    if (casesListRef.current) {
+      caseCards.current = Array.from(
+        casesListRef.current.querySelectorAll(`.${styles.caseCard}`)
+      );
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initial check
+    handleScroll();
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <section className={styles.caseStudiesSection}>
       <div className={styles.container}>
-        <div className={styles.casesList}>
+        <div className={styles.casesList} ref={casesListRef}>
           {caseStudies.map((caseStudy, index) => (
             <div
-            key={index}
-            className={styles.caseCard}
-            style={{ '--hover-image': `url(${caseStudy.hoverImageUrl})` } as React.CSSProperties}
-          >
+              key={index}
+              className={styles.caseCard}
+              style={{ '--hover-image': `url(${caseStudy.hoverImageUrl})` } as React.CSSProperties}
+            >
               <div className={styles.caseCardInner}>
                 <div className={styles.folded}></div>
                 <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 45.6968V2.9998L59 59.9998H16.303C8.40368 59.9998 2 53.5961 2 45.6968Z" fill="#FBF8F0" stroke="black" stroke-width="2.38384" />
+                  <path d="M2 45.6968V2.9998L59 59.9998H16.303C8.40368 59.9998 2 53.5961 2 45.6968Z" fill="#FBF8F0" stroke="black" strokeWidth="2.38384" />
                 </svg>
                 <h3 className={styles.caseTitle}>{caseStudy.title}</h3>
                 <p className={styles.caseDescription}>{caseStudy.description}</p>
@@ -128,7 +182,7 @@ const CaseStudiesSection: React.FC = () => {
         </div>
       </div>
       <div className={styles.pixelPatternContainer}>
-      <Image 
+        <Image 
           src={pixelPattern} 
           alt="Pixel Pattern" 
           className={styles.pixelPattern}

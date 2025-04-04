@@ -263,7 +263,7 @@ const StackSection: React.FC = () => {
         />
       </div>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>/ Design Lab /</h2>
+        <h2 className={styles.sectionTitle}>/BILD & KOHd/</h2>
         
         <div className={styles.stackCard}>
           <svg width="63" height="62" viewBox="0 0 63 62" fill="none" xmlns="http://www.w3.org/2000/svg">

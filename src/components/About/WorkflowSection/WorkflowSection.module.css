@@ -3,7 +3,7 @@
   font-family: "Roboto Mono", monospace;
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .container {
