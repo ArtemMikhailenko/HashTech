@@ -65,7 +65,7 @@ const WorkflowSection: React.FC = () => {
       
       // Map scroll progress to number of visible steps (0 to 5)
       // We divide by 0.8 to ensure all steps are visible when we've scrolled 80% through
-      const stepsToShow = Math.floor(scrollProgress / 0.8 * 8);
+      const stepsToShow = Math.floor(scrollProgress / 0.7 * 8);
       setVisibleSteps(stepsToShow);
     };
     
