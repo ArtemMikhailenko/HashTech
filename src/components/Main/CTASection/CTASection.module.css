@@ -125,8 +125,8 @@
     .leftText, .rightText {
       text-align: center;
       padding: 0;
-      max-width: 100%;
-      font-size: 9px;
+      max-width: 90%;
+      font-size: 12px;
       line-height: 133%;
     }
     
