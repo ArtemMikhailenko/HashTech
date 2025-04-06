@@ -163,7 +163,7 @@ const WhyChooseSection: React.FC = () => {
         
         <div className={styles.featuresGrid} ref={featuresRef}>
           <div className={styles.featureCard}>
-            <div className={styles.cardWrapper} style={{ '--hover-image': `url(/images/why-choose/img2.png)` } as React.CSSProperties}>
+            <div className={styles.cardWrapper} style={{ '--hover-image': `url(/images/why-choose/img2.webp)` } as React.CSSProperties}>
               <div className={styles.cardContent}>
                 <h3 className={styles.featureTitle}>From idea to execution</h3>
                 <p className={styles.featureDescription}>
@@ -178,7 +178,7 @@ const WhyChooseSection: React.FC = () => {
           </div>
           
           <div className={styles.featureCard}>
-            <div className={styles.cardWrapperR} style={{ '--hover-image': `url(/images/why-choose/img3.png)` } as React.CSSProperties}>
+            <div className={styles.cardWrapperR} style={{ '--hover-image': `url(/images/why-choose/img3.webp)` } as React.CSSProperties}>
               <div className={styles.cardContentR}>
                 <h3 className={styles.featureTitle}>Agile & Scalable Development</h3>
                 <p className={styles.featureDescription}>
@@ -193,7 +193,7 @@ const WhyChooseSection: React.FC = () => {
           </div>
           
           <div className={styles.featureCard}>
-            <div className={styles.cardWrapper} style={{ '--hover-image': `url(/images/why-choose/img1.png)` } as React.CSSProperties}>
+            <div className={styles.cardWrapper} style={{ '--hover-image': `url(/images/why-choose/img1.webp)` } as React.CSSProperties}>
               <div className={styles.cardContent}>
                 <h3 className={styles.featureTitle}>Expertise that delivers</h3>
                 <p className={styles.featureDescription}>
@@ -208,7 +208,7 @@ const WhyChooseSection: React.FC = () => {
           </div>
           
           <div className={styles.featureCard}>
-            <div className={styles.cardWrapperR} style={{ '--hover-image': `url(/images/why-choose/img4.png)` } as React.CSSProperties}>
+            <div className={styles.cardWrapperR} style={{ '--hover-image': `url(/images/why-choose/img4.webp)` } as React.CSSProperties}>
               <div className={styles.cardContentR}>
                 <h3 className={styles.featureTitle}>Trust & Security First</h3>
                 <p className={styles.featureDescription}>

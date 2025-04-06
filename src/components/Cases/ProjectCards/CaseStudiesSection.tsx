@@ -35,7 +35,7 @@ const CaseStudiesSection: React.FC = () => {
         { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
         { name: 'Cryptocurrency', backgroundColor: '#ad85ac' }
       ],
-      hoverImageUrl: '/images/cases/minner.png'
+      hoverImageUrl: '/images/cases/minner.webp'
     },
     {
       title: 'Qappi',
@@ -47,7 +47,7 @@ const CaseStudiesSection: React.FC = () => {
         { name: 'Gamification', backgroundColor: '#85ad8a' },
         { name: 'Community Growth', backgroundColor: '#ad85ac' }
       ],
-      hoverImageUrl: '/images/cases/qappi.png'
+      hoverImageUrl: '/images/cases/qappi.webp'
     },
     {
       title: 'Not Pixel',
@@ -59,7 +59,7 @@ const CaseStudiesSection: React.FC = () => {
         { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
         { name: 'NFT', backgroundColor: '#ad85ac' }
       ],
-      hoverImageUrl: '/images/cases/not-pixel.png'
+      hoverImageUrl: '/images/cases/not-pixel.webp'
     },
     {
       title: 'Yeet',
@@ -71,7 +71,7 @@ const CaseStudiesSection: React.FC = () => {
         { name: 'DeFi', backgroundColor: '#85ad8a' },
         { name: 'NFT', backgroundColor: '#ad85ac' }
       ],
-      hoverImageUrl: '/images/cases/yeet.png'
+      hoverImageUrl: '/images/cases/yeet.webp'
     }
   ];
   
