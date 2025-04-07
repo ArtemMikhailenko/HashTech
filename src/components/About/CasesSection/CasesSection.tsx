@@ -123,7 +123,7 @@ return (
       {!isMobile && (
         <div className={styles.cardsContainer}>
           {cases.map((caseItem) => (
-            <Link href={`/cases/${caseItem.id}`} key={caseItem.id} className={styles.cardLink}>
+            <div key={caseItem.id} className={styles.cardLink}>
               <div className={styles.card} style={{ backgroundColor: caseItem.backgroundColor }}>
                 <div className={styles.backgroundImage}>
                   <Image src={caseItem.backgroundImage} alt="" layout="fill" objectFit="cover" />
@@ -146,7 +146,7 @@ return (
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       )}

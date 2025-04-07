@@ -69,7 +69,7 @@
   background-image: url('/images/dot-pattern.png');
   width: 100%;
   height: 220px;
-  border-radius: 20px;
+  border-radius: 23px;
   z-index: 1;
   
   transition: background-image 0.3s ease;
@@ -98,12 +98,12 @@
   }
 
   .cardWrapperR:hover svg {
-    top: 64px;
+    top: 62px;
     transition: top 0.3s ease;
   }
   
   .cardWrapper:hover svg {
-    top: 61px;
+    top: 62px;
     right: 20px;
     transition: top 0.3s ease, right 0.3s ease;
   }
@@ -143,7 +143,7 @@
 
 .cardWrapper svg {
   position: absolute;
-  top: 31px;
+  top: 33px;
   right: 10px;
   z-index: 3;
   rotate: 3deg;
@@ -152,10 +152,10 @@
 
 .cardWrapperR svg {
   position: absolute;
-  top: 34px;
+  top: 30px;
   left: 20px;
   z-index: 3;
-  rotate: -7deg;
+  rotate: -3deg;
   transition: all 0.3s ease;
 }
 
@@ -177,7 +177,7 @@
   clip-path: polygon(
     0% 0%,
     calc(100% - 54px) 0%,
-    100% 40px,
+    100% 42px,
     100% 100%,
     0% 100%
   );
@@ -202,7 +202,7 @@
     100% 0%,
     100% 100%,
     0% 100%,
-    0% 50px
+    0% 42px
   );
   transition: all 0.3s ease;
   /* Fix for hover area issues */
@@ -271,8 +271,8 @@
 
   .cardWrapper svg {
     position: absolute;
-    top: 38px;
-    right: 1px;
+    top: 42px;
+    right: 0;
     z-index: 3;
     rotate: 3deg;
     transition: all 0.3s ease;
@@ -280,6 +280,6 @@
 
   .cardWrapper.activeCard svg {
     top: 72px;
-    right: 12px;
+    right: 10px;
   }
 }
