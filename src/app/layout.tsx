@@ -38,10 +38,10 @@ export const metadata: Metadata = {
     siteName: "HashTech",
     images: [
       {
-        url: "/images/og-image.jpg", 
+        url: "/images/og-hashtech-logo.png", // Create a square logo image with a colored background
         width: 1200,
-        height: 630,
-        alt: "HashTech - Web3 Development Studio",
+        height: 1200,
+        alt: "HashTech Logo",
       },
     ],
     locale: "en_US",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HashTech | Blockchain & Web3 Development Solutions",
     description: "HashTech is a Web3 startup studio and development partner focused on building and launching high-impact blockchain products.",
-    images: ["/images/og-image.jpg"], 
+    images: ["/images/og-hashtech-logo.png"], // Use same image as OpenGraph
   },
   robots: {
     index: true,
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
   verification: {
-    google: "google-site-verification-code", 
+    google: "google-site-verification-code",
   },
 };
 
