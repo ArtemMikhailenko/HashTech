@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "HashTech",
     images: [
       {
-        url: "/images/og-image.jpg", // Make sure to create this image
+        url: "/images/og-image.jpg", 
         width: 1200,
         height: 630,
         alt: "HashTech - Web3 Development Studio",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HashTech | Blockchain & Web3 Development Solutions",
     description: "HashTech is a Web3 startup studio and development partner focused on building and launching high-impact blockchain products.",
-    images: ["/images/og-image.jpg"], // Make sure to create this image
+    images: ["/images/og-image.jpg"], 
   },
   robots: {
     index: true,
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
   verification: {
-    google: "google-site-verification-code", // Replace with your actual verification code
+    google: "google-site-verification-code", 
   },
 };
 
