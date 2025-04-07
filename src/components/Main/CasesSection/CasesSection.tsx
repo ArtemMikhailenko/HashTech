@@ -159,9 +159,9 @@ const CasesSection: React.FC = () => {
         {isClient && !isMobile && !isTablet && (
           <div className={styles.cardsContainer}>
             {cases.map((caseItem) => (
-              <Link href={`/cases/${caseItem.id}`} key={caseItem.id} className={styles.cardLink}>
+              <div key={caseItem.id} className={styles.cardLink}>
                 {renderCaseCard(caseItem)}
-              </Link>
+              </div>
             ))}
           </div>
         )}
