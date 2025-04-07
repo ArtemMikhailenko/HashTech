@@ -61,7 +61,6 @@
   .navLink {
     color: white;
     text-decoration: none;
-    /* margin-right: 2rem; */
     font-size: 1rem;
     transition: opacity 0.2s ease;
   }
