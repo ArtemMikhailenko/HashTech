@@ -26,10 +26,10 @@ const TeamSection: React.FC = () => {
                 </div>
                 
                 <div className={styles.socialLinks}>
-                  <Link href="https://linkedin.com" className={styles.socialLink}>
+                  <Link href="https://www.linkedin.com/in/kondratenko0/" className={styles.socialLink}>
                     <span className={styles.linkIcon}>in</span>
                   </Link>
-                  <Link href="https://twitter.com" className={styles.socialLink}>
+                  <Link href="https://x.com/web3cpo" className={styles.socialLink}>
                     <span className={styles.linkIcon}>X</span>
                   </Link>
                 </div>
@@ -54,12 +54,12 @@ const TeamSection: React.FC = () => {
                 </div>
                 
                 <div className={styles.socialLinks}>
-                  <Link href="https://linkedin.com" className={styles.socialLink}>
+                  <Link href="https://www.linkedin.com/in/vovkapultik/" className={styles.socialLink}>
                     <span className={styles.linkIcon}>in</span>
                   </Link>
-                  <Link href="https://twitter.com" className={styles.socialLink}>
+                  {/* <Link href="https://twitter.com" className={styles.socialLink}>
                     <span className={styles.linkIcon}>X</span>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>
@@ -82,10 +82,10 @@ const TeamSection: React.FC = () => {
                 </div>
                 
                 <div className={styles.socialLinks}>
-                  <Link href="https://linkedin.com" className={styles.socialLink}>
+                  <Link href="https://www.linkedin.com/in/esenia-romanovskaia-6629b521a/" className={styles.socialLink}>
                     <span className={styles.linkIcon}>in</span>
                   </Link>
-                  <Link href="https://twitter.com" className={styles.socialLink}>
+                  <Link href="https://x.com/daoobird" className={styles.socialLink}>
                     <span className={styles.linkIcon}>X</span>
                   </Link>
                 </div>

@@ -17,7 +17,7 @@ const CTASection: React.FC = () => {
             <p>If you are a founder with an idea for your own web3 project</p>
           </div>
           
-          <Link href="/contact" className={styles.ctaButton}>
+          <Link href="https://calendly.com/ok-hashtech/30min" className={styles.ctaButton}>
             Let's talk!
           </Link>
           

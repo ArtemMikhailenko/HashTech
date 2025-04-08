@@ -17,7 +17,7 @@ const UnlockPotentialSection: React.FC = () => {
           HashTech's top Web3 specialists. Let's turn your vision into a thriving product.
         </p>
         
-        <Link href="/contact" className={styles.consultationButton}>
+        <Link href="https://calendly.com/ok-hashtech/30min" className={styles.consultationButton}>
           Book a consultation now
         </Link>
       </div>

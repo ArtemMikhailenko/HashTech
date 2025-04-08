@@ -82,18 +82,18 @@ const Header: React.FC = () => {
               <li><Link href="/careers">Careers</Link></li>
             </ul>
           </nav>
-          <button className={`${styles.contactButton} ${hasLightBackground ? styles.darkButton : styles.lightButton}`}>
+          <a href=' https://calendly.com/ok-hashtech/30min' className={`${styles.contactButton} ${hasLightBackground ? styles.darkButton : styles.lightButton}`}>
             Contact us
-          </button>
+          </a>
         </>
       )}
       
       {/* Mobile Menu Button */}
       {isMobile && (
         <div className={styles.mobileBlock}>
-           <button className={`${styles.mobileContactButton} ${hasLightBackground ? styles.darkButton : styles.lightButton}`}>
+           <a href=' https://calendly.com/ok-hashtech/30min' className={`${styles.mobileContactButton} ${hasLightBackground ? styles.darkButton : styles.lightButton}`}>
                   Contact us
-                </button>
+                </a>
         <button 
           className={`${styles.menuButton} ${isMenuOpen ? styles.menuButtonActive : ''}`}
           onClick={toggleMenu}

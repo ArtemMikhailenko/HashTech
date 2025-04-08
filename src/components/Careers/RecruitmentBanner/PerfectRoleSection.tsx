@@ -18,7 +18,7 @@ const PerfectRoleSection: React.FC = () => {
             Whether you're a high-impact influencer
           </p>
           
-          <Link href="/contact" className={styles.ctaButton}>
+          <Link href="https://calendly.com/ok-hashtech/30min" className={styles.ctaButton}>
             Let's talk!
           </Link>
           
