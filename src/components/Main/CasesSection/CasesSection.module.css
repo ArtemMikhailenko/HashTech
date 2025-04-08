@@ -56,7 +56,7 @@
 .cardsContainer {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
   margin-bottom: 3rem;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .cardContent {
-  padding: 1.5rem;
+  padding: 20px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -113,7 +113,7 @@
 
 .tags {
   display: flex;
-  gap: 0.8rem;
+  gap: 9px;
   margin-bottom: 1rem;
   opacity: 0;
   transform: translateY(10px);
