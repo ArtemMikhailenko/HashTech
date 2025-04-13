@@ -19,7 +19,20 @@
   font-family: "Roboto Flex", sans-serif;
   margin-bottom: 3rem;
 }
+.description{
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 133%;
+  font-family: "Roboto Mono", sans-serif;
+  letter-spacing: -0.02em;
+  color: #0e0c16;
 
+}
+.description a{
+  font-weight: 600;
+  cursor: pointer;
+  font-weight: 24px;
+}
 .categoryFilters {
   display: flex;
   flex-wrap: wrap;

@@ -13,9 +13,9 @@ const OpenPositionsSection: React.FC = () => {
           roles and become part of something bigger.
         </p>
         
-        <Link href="/careers" className={styles.joinButton}>
+        {/* <Link href="/careers" className={styles.joinButton}>
           Join our team
-        </Link>
+        </Link> */}
       </div>
     </section>
   );

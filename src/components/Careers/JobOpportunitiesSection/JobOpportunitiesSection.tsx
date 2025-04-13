@@ -123,8 +123,21 @@ const JobOpportunitiesSection: React.FC = () => {
     <section className={styles.jobSection}>
       <div className={styles.container}>
         <h2 className={styles.title}>/ Explore New Opportunities /</h2>
-        
-        <div className={styles.categoryFilters}>
+        <p className={styles.description}>
+      We’re not actively hiring right now — but we’re always excited to meet talented people.
+      If you think you’d be a great fit for HashTech, feel free to reach out at{' '}
+      <a href="mailto:ok@hashtech.dev">ok@hashtech.dev</a>{' '}
+      or follow us on{' '}
+      <a
+        href="https://x.com/hashtech_dev"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Twitter
+      </a>{' '}
+      for future openings.
+    </p>
+        {/* <div className={styles.categoryFilters}>
           {jobCategories.map(category => (
             <button 
               key={category}
@@ -134,10 +147,10 @@ const JobOpportunitiesSection: React.FC = () => {
               {category}
             </button>
           ))}
-        </div>
+        </div> */}
         
         {/* Mobile Slider - only rendered on client side */}
-        {isClient && isMobile && (
+        {/* {isClient && isMobile && (
           <div className={styles.mobileSliderContainer}>
             <Swiper
               modules={[Navigation]}
@@ -175,14 +188,14 @@ const JobOpportunitiesSection: React.FC = () => {
               </button>
             </div>
           </div>
-        )}
+        )} */}
         
         {/* Desktop Grid */}
-        <div className={styles.jobGrid}>
+        {/* <div className={styles.jobGrid}>
           {filteredJobs.map(job => (
             <div key={job.id}>{renderJobCard(job)}</div>
           ))}
-        </div>
+        </div> */}
       </div>
       <div className={styles.pixelPatternContainer}>
         <Image 

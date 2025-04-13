@@ -44,7 +44,7 @@ const CaseStudiesSection: React.FC = () => {
       services: ['Development', 'Design'],
       sectors: [
         { name: 'Blockchain', backgroundColor: '#8595ad' },
-        { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
+        { name: 'SocialFi', backgroundColor: '#85ad8a' },
         { name: 'Community Growth', backgroundColor: '#ad85ac' }
       ],
       hoverImageUrl: '/images/cases/qappi.webp'
