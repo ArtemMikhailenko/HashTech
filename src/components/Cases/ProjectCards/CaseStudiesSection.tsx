@@ -29,7 +29,7 @@ const CaseStudiesSection: React.FC = () => {
       title: 'Angry miner',
       description: 'A P2E success with 480K+ DAU, $2.59M+ in player transactions, and 120K+ user deposits',
       cost: '40,000$',
-      services: ['Development', 'Design', 'Marketing'],
+      services: ['Development', 'Design'],
       sectors: [
         { name: 'Blockchain', backgroundColor: '#8595ad' },
         { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
@@ -40,11 +40,11 @@ const CaseStudiesSection: React.FC = () => {
     {
       title: 'Qappi',
       description: 'A Web3 engagement platform with 12M+ on-chain transactions and a branded tea line',
-      cost: '105,000',
+      cost: '105,000$',
       services: ['Development', 'Design'],
       sectors: [
         { name: 'Blockchain', backgroundColor: '#8595ad' },
-        { name: 'Gamification', backgroundColor: '#85ad8a' },
+        { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
         { name: 'Community Growth', backgroundColor: '#ad85ac' }
       ],
       hoverImageUrl: '/images/cases/qappi.webp'
@@ -52,7 +52,7 @@ const CaseStudiesSection: React.FC = () => {
     {
       title: 'Not Pixel',
       description: 'A Telegram-based pixel art game with 10M+ pixel placements and a thriving creative community',
-      cost: '25,000',
+      cost: '5,000$',
       services: ['Design'],
       sectors: [
         { name: 'Blockchain', backgroundColor: '#8595ad' },
@@ -64,11 +64,11 @@ const CaseStudiesSection: React.FC = () => {
     {
       title: 'Yeet',
       description: 'A DeFi hit on Berachain: $12.79M+ market cap, 30K+ stakers, 4.33M+ transactions, and a sold-out NFT collection.',
-      cost: '25,000',
+      cost: '3,500$',
       services: ['Design', 'Animation'],
       sectors: [
         { name: 'Blockchain', backgroundColor: '#8595ad' },
-        { name: 'DeFi', backgroundColor: '#85ad8a' },
+        { name: 'Play-to-Earn (P2E)', backgroundColor: '#85ad8a' },
         { name: 'NFT', backgroundColor: '#ad85ac' }
       ],
       hoverImageUrl: '/images/cases/yeet.webp'

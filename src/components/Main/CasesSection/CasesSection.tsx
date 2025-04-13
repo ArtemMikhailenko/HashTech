@@ -140,9 +140,9 @@ const CasesSection: React.FC = () => {
             __html: formatDescription(caseItem.description, caseItem.strongParts)
           }}
         />
-        <div className={styles.discoverButton}>
+        <Link href='/cases' className={styles.discoverButton}>
           Discover more
-        </div>
+        </Link>
       </div>
     </div>
   );

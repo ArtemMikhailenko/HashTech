@@ -12,6 +12,7 @@ import lego2 from '../../../../public/images/lego2.svg';
 import lego3 from '../../../../public/images/lego3.svg';
 import lego4 from '../../../../public/images/lego4.svg';
 import lego5 from '../../../../public/images/lego5.svg';
+import Link from 'next/link';
 
 const StackSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -348,7 +349,8 @@ const StackSection: React.FC = () => {
             className={`${styles.buttonContainer} ${styles.zIndex5}`}
             ref={buttonRef}
           >
-            <button className={styles.createButton}>Let's build together</button>
+            <Link href="https://calendly.com/ok-hashtech/30min" target="_blank"
+      rel="noopener noreferrer" className={styles.createButton}>Let's build together</Link>
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import design1 from '../../../../public/images/design1.png'; // Product & UI/UX 
 import design2 from '../../../../public/images/design2.png'; // Illustration & Motion Design
 import design3 from '../../../../public/images/design3.png'; // Branding & Visual Identity
 import design4 from '../../../../public/images/design4.png'; // Creative Content & Gamification
+import Link from 'next/link';
 
 const DesignLabSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -306,7 +307,8 @@ const DesignLabSection: React.FC = () => {
             className={`${styles.buttonContainer} ${isMobile ? styles.mobileButtonContainer : ''} ${styles.zIndex5}`}
             ref={buttonRef}
           >
-            <button className={styles.createButton}>Let's create together</button>
+            <Link href="https://calendly.com/ok-hashtech/30min" target="_blank"
+      rel="noopener noreferrer" className={styles.createButton}>Let's create together</Link>
           </div>
         </div>
       </div>
